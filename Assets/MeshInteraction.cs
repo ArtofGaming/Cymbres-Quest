@@ -9,12 +9,12 @@ public class MeshInteraction : MonoBehaviour
     RaycastHit hit;
     public GameObject mesh;
     public Player player;
-    MeshGeneration meshGeneration;
-    GameManager gameManager;
+    public MeshGeneration meshGeneration;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -23,8 +23,9 @@ public class MeshInteraction : MonoBehaviour
         
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void Movement()
     {
+        
         Debug.Log("Recieved point");
         if (!gameManager.selectedObject.GetComponent<Player>().moved)
         {
