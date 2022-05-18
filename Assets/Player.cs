@@ -42,7 +42,11 @@ public class Player : MonoBehaviour
                 meshGeneration.circleHolder = this.gameObject;
 
                 meshGeneration.GenerateMovementMesh();
-                meshInteraction.Movement();
+                
+
+            }
+            else if (gameManager.selectedObject == this.gameObject && hit.collider != null)
+            {
 
             }
             else if (gameManager.selectedObject != this && this.moved && !attacked)
