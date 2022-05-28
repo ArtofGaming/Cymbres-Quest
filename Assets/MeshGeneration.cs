@@ -40,6 +40,7 @@ public class MeshGeneration : MonoBehaviour
         mesh = new Mesh()
         {
             name = "Procedural Mesh"  
+            
         };
         mesh2 = new Mesh()
         {
@@ -51,56 +52,57 @@ public class MeshGeneration : MonoBehaviour
         mesh.name = "Movement Mesh";
         // calculate movement radius
         radius = 2;
+        //this.gameObject.transform.localScale = new Vector3(.02f, .02f, .02f);
         meshCollider = this.gameObject.AddComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
         // pick most vital points to create polygon
         // first quadrant
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius*2), ny = 0, nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius*2), ny = 0, nz = 0 });
         //2
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 6) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI /6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 6) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI /6) * radius * 2), nz = 0 });
         //4
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 0 });
         //6
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI / 2)) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = 0, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 2) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI / 2)) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = 0, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 2) * radius * 2), nz = 0 });
 
         //8 second quadrant
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 2) / 3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 2) / 3) * radius * 2), nz = 0 });
         //10
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 5) / 6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 5) / 6) * radius * 2), nz = 0 });
         //12
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = 0, nz = 1 }); //
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = 0, nz = 0 }); //
 
         //14 third quadrant
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 0 });
         //16
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -2) / 3) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI *- 2) / 3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -2) / 3) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI *- 2) / 3) * radius * 2), nz = 0 });
         //18
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(-Mathf.PI / 2) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = 0, ny = -radius * 2, nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(-Mathf.PI / 2) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = 0, ny = -radius * 2, nz = 0 });
 
         //20 fourth quadrant
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -3) * radius * 2), nz = 0 });
         //22
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -6) * radius * 2), nz = 0 });
 
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = 0, nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = 0, nz = 0 });
 
         Debug.Log(correctedPoints.Count);
         // convert circle to polygon
         for (int i = 0; i < 25; i++)
         {
-            vertexList[i] = new Vector3(correctedPoints[i].nx, correctedPoints[i].ny, circleHolder.transform.position.z + radius);
+            vertexList[i] = new Vector3(correctedPoints[i].nx, correctedPoints[i].ny, 0);
         }
         // generate polygon from perimeter to center
         mesh.vertices = vertexList;
@@ -122,52 +124,52 @@ public class MeshGeneration : MonoBehaviour
         Debug.Log("Positioning circle");
         // pick most vital points to create polygon
         // first quadrant
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = 0, nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = 0, nz = 0 });
         //2
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 6) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 6) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 6) * radius * 2), nz = 0 });
         //4
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 3) * radius * 2), nz = 0 });
         //6
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI / 2)) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = 0, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 2) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI / 2)) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = 0, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 2) * radius * 2), nz = 0 });
 
         //8 second quadrant
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 2) / 3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 2) / 3) * radius * 2), nz = 0 });
         //10
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 5) / 6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 5) / 6) * radius * 2), nz = 0 });
         //12
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = 0, nz = 1 }); //
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = 0, nz = 0 }); //
 
         //14 third quadrant
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 0 });
         //16
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -2) / 3) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -2) / 3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -2) / 3) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -2) / 3) * radius * 2), nz = 0 });
         //18
-        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(-Mathf.PI / 2) * radius * 2), nz = 1 });
-        correctedPoints.Add(new Node() { nx = 0, ny = -radius * 2, nz = 1 });
+        correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(-Mathf.PI / 2) * radius * 2), nz = 0 });
+        correctedPoints.Add(new Node() { nx = 0, ny = -radius * 2, nz = 0 });
 
         //20 fourth quadrant
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -3) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -3) * radius * 2), nz = 0 });
         //22
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -6) * radius * 2), nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / -6) * radius * 2), nz = 0 });
 
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 1 });
-        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = 0, nz = 1 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
+        correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius * 2), ny = 0, nz = 0 });
 
         Debug.Log(correctedPoints.Count);
         // convert circle to polygon
         for (int i = 0; i < 25; i++)
         {
-            vertexList[i] = new Vector3(correctedPoints[i].nx, correctedPoints[i].ny, 1);
+            vertexList[i] = new Vector3(correctedPoints[i].nx, correctedPoints[i].ny, 0);
         }
         // generate polygon from perimeter to center
         mesh2.vertices = vertexList;
