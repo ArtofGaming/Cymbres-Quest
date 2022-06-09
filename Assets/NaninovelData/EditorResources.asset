@@ -145,7 +145,7 @@ MonoBehaviour:
       guid: e3b234b4273b7f64ab3f1d9fe425ed23
     - name: SettingsUI
       pathPrefix: UI
-      guid: 65c37f59e9b266f468dd5381fdc03fc3
+      guid: e6b4595b43a028a46b992cbc7f4057b3
     - name: TipsUI
       pathPrefix: UI
       guid: f5aae572225ee1b4c96d1a17fc5cb073
@@ -161,3 +161,8 @@ MonoBehaviour:
     - name: ToastUI
       pathPrefix: UI
       guid: dd85ce99288c2f8488447fa511b1c0d6
+    - name: 
+      pathPrefix: UI
+      guid: 
+  - Id: Scripts
+    Resources: []
