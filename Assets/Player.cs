@@ -29,13 +29,13 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.started)
-        {
+        { 
+            //change this up to become more of gamemanager's responsibility
             ray = Camera.main.ScreenPointToRay(new Vector3 (Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue(), 0));
             Physics.Raycast(ray, out hit);
-            ray.direction = -ray.direction;
-            Debug.Log(gameManager.selectedObject);
-            Debug.Log(hit.collider);
-            Debug.Log(this.moved);
+            // Debug.Log(gameManager.selectedObject);
+            // Debug.Log(hit.collider);
+            // Debug.Log(this.moved);
             Debug.DrawRay(ray.origin, Vector3.forward, Color.red, 100);
             if (gameManager.selectedObject != this.gameObject && hit.collider != null && !this.moved)
             {
@@ -46,18 +46,20 @@ public class Player : MonoBehaviour
                 meshGeneration.meshCollider.convex = true;
 
             }
-            else if (hit.collider == gameManager.selectedObject.GetComponentInChildren<MeshCollider>() && hit.collider != null)
+            else if (hit.collider == gameManager.selectedObject.GetComponentInChildren<MeshCollider>() && hit.collider != null && !this.moved)
             {
+                //Need to adjust to highlight sections of the available grid
                 ray = Camera.main.ScreenPointToRay(new Vector3(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue(), 0));
                 Physics.Raycast(ray, out hit);
                 gameManager.selectedObject.transform.position = hit.point;
+                this.moved = true;
+                gameManager.ActionMenu();
             }
-            else if (gameManager.selectedObject != this && this.moved && !attacked)
+            else if (gameManager.selectedObject == this.gameObject && this.moved && !attacked)
             {
                 Debug.Log("AttackMesh generated");
                 ray = Camera.main.ScreenPointToRay(new Vector3(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue(), 0));
                 Physics.Raycast(ray, out hit);
-                ray.direction = -ray.direction;
                 GameObject.Destroy(meshGeneration.mesh);
                 gameManager.selectedObject = this.gameObject;
                 meshGeneration.circleHolder = this.gameObject;

@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ActionMenu()
+    {
+
+    }
+
     public void AttackSequence()
     {
 
