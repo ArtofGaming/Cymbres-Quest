@@ -27,13 +27,13 @@ public class MeshInteraction : MonoBehaviour
     {
         
         Debug.Log("Recieved point");
-        if (!gameManager.selectedObject.GetComponent<Player>().moved)
+        if (!gameManager.selectedUnit.GetComponent<Player>().moved)
         {
-            gameManager.selectedObject.transform.position = new Vector3(Mouse.current.position.x.ReadValue(), gameManager.selectedObject.transform.position.y, Mouse.current.position.y.ReadValue());
+            gameManager.selectedUnit.transform.position = new Vector3(Mouse.current.position.x.ReadValue(), gameManager.selectedUnit.transform.position.y, Mouse.current.position.y.ReadValue());
         }
-        else if (!gameManager.selectedObject.GetComponent<Player>().attacked)
+        else if (!gameManager.selectedUnit.GetComponent<Player>().attacked)
         {
-            gameManager.AttackSequence();
+            gameManager.UnitAttack();
         }
     }
 }

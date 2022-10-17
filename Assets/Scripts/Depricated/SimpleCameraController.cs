@@ -8,6 +8,7 @@ namespace UnityTemplateProjects
 {
     public class SimpleCameraController : MonoBehaviour
     {
+        //Camera class which have preset functions to allow the change of the camera's transform values
         class CameraState
         {
             public float yaw;
@@ -17,6 +18,7 @@ namespace UnityTemplateProjects
             public float y;
             public float z;
 
+            //Set transform based on argument passed, changes rotation & position
             public void SetFromTransform(Transform t)
             {
                 pitch = t.eulerAngles.x;
@@ -27,6 +29,7 @@ namespace UnityTemplateProjects
                 z = t.position.z;
             }
 
+            //translate the cam based on a Vector3 translation...rotation translation??
             public void Translate(Vector3 translation)
             {
                 Vector3 rotatedTranslation = Quaternion.Euler(pitch, yaw, roll) * translation;
@@ -36,6 +39,7 @@ namespace UnityTemplateProjects
                 z += rotatedTranslation.z;
             }
 
+            //Using Lerp fcn, moves the camera a certain percentage to a set var target
             public void LerpTowards(CameraState target, float positionLerpPct, float rotationLerpPct)
             {
                 yaw = Mathf.Lerp(yaw, target.yaw, rotationLerpPct);
@@ -47,6 +51,7 @@ namespace UnityTemplateProjects
                 z = Mathf.Lerp(z, target.z, positionLerpPct);
             }
 
+            //Same fcn as the "SetFromTransform" fcn???
             public void UpdateTransform(Transform t)
             {
                 t.eulerAngles = new Vector3(pitch, yaw, roll);
@@ -54,11 +59,14 @@ namespace UnityTemplateProjects
             }
         }
 
+
         const float k_MouseSensitivityMultiplier = 0.01f;
+
 
         CameraState m_TargetCameraState = new CameraState();
         CameraState m_InterpolatingCameraState = new CameraState();
 
+        
         [Header("Movement Settings")]
         [Tooltip("Exponential boost factor on translation, controllable by mouse wheel.")]
         public float boost = 3.5f;

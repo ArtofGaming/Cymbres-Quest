@@ -7,6 +7,7 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    #region "Variables in GameManager"
     public List<GameObject> aliveUnits;
     public List <GameObject> aliveEnemyUnits;
     public GridMovement gridMovement;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     GameObject fastestUnit;
     public TextMeshPro damageText;
     public List <int> unitDistance;
-
+    #endregion
 
     //have units deselect at the end of turn
     //control health gain/loss

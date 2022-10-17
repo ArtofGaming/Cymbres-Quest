@@ -6,6 +6,8 @@ using TMPro;
 
 public class InfoPopulation : MonoBehaviour
 {
+    
+    #region "Variables in InfoPopulation"
     public TextMeshProUGUI unitNameText;
     public TextMeshProUGUI unitLevel;
     public TextMeshProUGUI unitClass;
@@ -22,7 +24,7 @@ public class InfoPopulation : MonoBehaviour
     public UnitInfo selectedObject;
     public GridMovement gridMovement;
     public Collider selectedCollider;
-    
+    #endregion
 
     // Start is called before the first frame update
     void Start()

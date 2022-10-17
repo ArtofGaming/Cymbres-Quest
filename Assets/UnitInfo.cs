@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitInfo : MonoBehaviour
 {
+    #region "UnitInfo Vars"
     public string unitName;
     [HideInInspector]
     public int unitLevel;
@@ -23,14 +24,15 @@ public class UnitInfo : MonoBehaviour
     public int unitEnergy;
     public int unitSkillResist;
     Customization customization;
+    #endregion
 
-    // Start is called before the first frame update
+
     void Start()
     {
         customization = GameObject.Find("boss").GetComponent<Customization>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (currentUnitExperience == maxUnitExperience)
@@ -38,6 +40,7 @@ public class UnitInfo : MonoBehaviour
             LevelUp();
         }
     }
+
     void LevelUp()
     {
         currentUnitExperience = 0;

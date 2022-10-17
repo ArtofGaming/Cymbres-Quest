@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Customization : MonoBehaviour
 {
+    #region "Customization Vars..."
     public GameObject currentUnit;
     GameObject lastUnit;
     public List<GameObject> units;
@@ -38,6 +39,10 @@ public class Customization : MonoBehaviour
 
     TMP_Dropdown.OptionData bodyOption1, bodyOption2, bodyOption3;
     TMP_Dropdown.OptionData colorOption1, colorOption2, colorOption3, colorOption4, colorOption5, colorOption6;
+
+    #endregion
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -120,12 +125,6 @@ public class Customization : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void NextClick()
     {
         lastUnit = currentUnit;
@@ -145,6 +144,8 @@ public class Customization : MonoBehaviour
         ShowInfo();
         Debug.Log(currentUnitInfo.unitClass);
     }
+
+
     public void PrevClick()
     {
         lastUnit = currentUnit;

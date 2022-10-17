@@ -38,26 +38,16 @@ namespace TMPro.Examples
                 m_textMeshPro = gameObject.AddComponent<TextMeshPro>();
                 m_textMeshPro.autoSizeTextContainer = true;
 
-                //m_textMeshPro.anchorDampening = true;
+
 
                 if (TMProFont != null)
                     m_textMeshPro.font = TMProFont;
 
-                //m_textMeshPro.font = Resources.Load("Fonts & Materials/Anton SDF", typeof(TextMeshProFont)) as TextMeshProFont; // Make sure the Anton SDF exists before calling this...
-                //m_textMeshPro.fontSharedMaterial = Resources.Load("Fonts & Materials/Anton SDF", typeof(Material)) as Material; // Same as above make sure this material exists.
-
                 m_textMeshPro.fontSize = 48;
                 m_textMeshPro.alignment = TextAlignmentOptions.Center;
-                //m_textMeshPro.anchor = AnchorPositions.Center;
                 m_textMeshPro.extraPadding = true;
-                //m_textMeshPro.outlineWidth = 0.25f;
-                //m_textMeshPro.fontSharedMaterial.SetFloat("_OutlineWidth", 0.2f);
-                //m_textMeshPro.fontSharedMaterial.EnableKeyword("UNDERLAY_ON");
-                //m_textMeshPro.lineJustification = LineJustificationTypes.Center;
                 m_textMeshPro.enableWordWrapping = false;    
-                //m_textMeshPro.lineLength = 60;          
-                //m_textMeshPro.characterSpacing = 0.2f;
-                //m_textMeshPro.fontColor = new Color32(255, 255, 255, 255);
+
 
                 m_material01 = m_textMeshPro.font.material;
                 m_material02 = Resources.Load<Material>("Fonts & Materials/LiberationSans SDF - Drop Shadow"); // Make sure the LiberationSans SDF exists before calling this...  

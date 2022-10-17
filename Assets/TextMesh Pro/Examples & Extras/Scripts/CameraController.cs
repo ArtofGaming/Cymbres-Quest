@@ -7,7 +7,10 @@ namespace TMPro.Examples
     
     public class CameraController : MonoBehaviour
     {
+
         public enum CameraModes { Follow, Isometric, Free }
+
+        #region "CameraController Vars"
 
         private Transform cameraTransform;
         private Transform dummyTarget;
@@ -41,22 +44,31 @@ namespace TMPro.Examples
         private float mouseY;
         private Vector3 moveVector;
         private float mouseWheel;
+        #endregion
+
 
         // Controls for Touches on Mobile devices
         //private float prev_ZoomDelta;
-
 
         private const string event_SmoothingValue = "Slider - Smoothing Value";
         private const string event_FollowDistance = "Slider - Camera Zoom";
 
 
+        //Game Settings, Settings 4 mobile users, & Cam setup
         void Awake()
         {
+            /*To check what the vSyncCount is... if it's above 0, this means that vSync is on and will divide frame rate by
+            *Sync Count... IE 60FPS with vSyncCount =2 will render 30 FPS to the viewer
+            *
+            *targetFrameRate is the framerate which we want Unity to render the game as... if targetFrameRate = 60fps, then
+            *it will attempt to produce this many rendered frames to the viewer... thus will take in account vSync value as well
+            */
             if (QualitySettings.vSyncCount > 0)
                 Application.targetFrameRate = 60;
             else
                 Application.targetFrameRate = -1;
 
+            //Changes in Input settings to allow the player to play the game correctly on a mobile version
             if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
                 Input.simulateMouseWithTouches = false;
 
@@ -65,7 +77,7 @@ namespace TMPro.Examples
         }
 
 
-        // Use this for initialization
+        // Cam Target == null, point to default
         void Start()
         {
             if (CameraTarget == null)
@@ -76,15 +88,20 @@ namespace TMPro.Examples
             }
         }
 
-        // Update is called once per frame
+        // LateUpdate done after Update & fixedUpdate
         void LateUpdate()
         {
             GetPlayerInput();
 
+            CameraChecks();
+        }
 
+        void CameraChecks()
+        {
             // Check if we still have a valid target
             if (CameraTarget != null)
             {
+                #region "CameraMode Checks & Changes"
                 if (CameraMode == CameraModes.Isometric)
                 {
                     desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
@@ -97,7 +114,9 @@ namespace TMPro.Examples
                 {
                     // Free Camera implementation
                 }
+                #endregion
 
+                #region "MovementSmoothing == true"
                 if (MovementSmoothing == true)
                 {
                     // Using Smoothing
@@ -109,18 +128,18 @@ namespace TMPro.Examples
                     // Not using Smoothing
                     cameraTransform.position = desiredPosition;
                 }
+                #endregion
 
+                #region "RotationSmoothing Checks & Changes"
                 if (RotationSmoothing == true)
                     cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, Quaternion.LookRotation(CameraTarget.position - cameraTransform.position), RotationSmoothingValue * Time.deltaTime);
                 else
                 {
                     cameraTransform.LookAt(CameraTarget);
                 }
-
+                #endregion
             }
-
         }
-
 
 
         void GetPlayerInput()
@@ -146,7 +165,7 @@ namespace TMPro.Examples
                     MovementSmoothing = !MovementSmoothing;
 
 
-                // Check for right mouse button to change camera follow and elevation angle
+                #region "Check for right mouse button to change camera follow and elevation angle"
                 if (Input.GetMouseButton(1))
                 {
                     mouseY = Input.GetAxis("Mouse Y");
@@ -168,8 +187,9 @@ namespace TMPro.Examples
                             OrbitalAngle += 360;
                     }
                 }
+                #endregion
 
-                // Get Input from Mobile Device
+                #region "Input from Mobile Device"
                 if (touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
                     Vector2 deltaPosition = Input.GetTouch(0).deltaPosition;
@@ -194,6 +214,7 @@ namespace TMPro.Examples
                     }
 
                 }
+                #endregion
 
                 // Check for left mouse button to select a new CameraTarget or to reset Follow position
                 if (Input.GetMouseButton(0))
@@ -253,7 +274,7 @@ namespace TMPro.Examples
 
             }
 
-            // Check Pinching to Zoom in - out on Mobile device
+            #region "Check Pinching to Zoom in - out on Mobile device"
             if (touchCount == 2)
             {
                 Touch touch0 = Input.GetTouch(0);
@@ -276,8 +297,10 @@ namespace TMPro.Examples
 
 
             }
+            #endregion
 
-            // Check MouseWheel to Zoom in-out
+
+            #region "Check MouseWheel to Zoom in-out"
             if (mouseWheel < -0.01f || mouseWheel > 0.01f)
             {
 
@@ -285,7 +308,7 @@ namespace TMPro.Examples
                 // Limit FollowDistance between min & max values.
                 FollowDistance = Mathf.Clamp(FollowDistance, MinFollowDistance, MaxFollowDistance);
             }
-
+            #endregion
 
         }
     }
