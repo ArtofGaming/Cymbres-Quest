@@ -33,6 +33,8 @@ public class UnitInfo : MonoBehaviour
     }
 
 
+    //Checks if the unit is ready to level up, if so level up
+    //Change to be a get; set; with the experience value to remove constant updates?
     void Update()
     {
         if (currentUnitExperience == maxUnitExperience)
@@ -41,12 +43,15 @@ public class UnitInfo : MonoBehaviour
         }
     }
 
+    // levels up units and gives expereince
     void LevelUp()
     {
         currentUnitExperience = 0;
         unitLevel += 1;
         maxUnitExperience = Mathf.RoundToInt(unitLevel * 1.35f);
     }
+
+    //Grabs from the customization script of the current class
     public void IdentifyYourself()
     {
         customization.currentUnitClass = unitClass;

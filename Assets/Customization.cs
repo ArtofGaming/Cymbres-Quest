@@ -43,7 +43,7 @@ public class Customization : MonoBehaviour
     #endregion
 
 
-    // Start is called before the first frame update
+    //grab all units which are the player's units and place them into a list to keep track
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -55,6 +55,8 @@ public class Customization : MonoBehaviour
         }
 
     }
+
+    //Set up for customization of the characters w/ their body colors & stats
     void Start()
     {
         
@@ -125,8 +127,10 @@ public class Customization : MonoBehaviour
 
     }
 
+    //Changing out units ? way
     public void NextClick()
     {
+        //changes the previous unit and changes current unit to the next unit available, or does a loop around the units.
         lastUnit = currentUnit;
         if (units.Count <= units.IndexOf(lastUnit) + 1)
         {
@@ -136,6 +140,8 @@ public class Customization : MonoBehaviour
         {
             currentUnit = units[units.IndexOf(lastUnit) + 1];
         }
+
+        //changes settings to hide prev unit and set current unit active. Shows info of the unit as well.
         lastUnit.SetActive(false);
         currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
         selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
@@ -145,9 +151,10 @@ public class Customization : MonoBehaviour
         Debug.Log(currentUnitInfo.unitClass);
     }
 
-
+    //Changing out units ? way
     public void PrevClick()
     {
+        //changes the previous unit and changes current unit to the next unit available, or does a loop around the units.
         lastUnit = currentUnit;
         if (units.IndexOf(lastUnit) == 0)
         {
@@ -157,6 +164,8 @@ public class Customization : MonoBehaviour
         {
             currentUnit = units[units.IndexOf(lastUnit) - 1];
         }
+
+        //changes settings to hide prev unit and set current unit active. Shows info of the unit as well.
         lastUnit.SetActive(false);
         currentUnit.SetActive(true);
         currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
@@ -166,6 +175,8 @@ public class Customization : MonoBehaviour
         
     }
 
+
+    //not found anywhere? Is this used or just deleted? 
     public void ChangeMaterial()
     {
         if(materialDropdown.value == 0)
@@ -185,6 +196,8 @@ public class Customization : MonoBehaviour
             selectedMaterial = currentUnit.GetComponent<Renderer>().materials[1];
         }
     }
+
+    //Use showInfo function to clean up this code?
     public void ChangeColor()
     {
         if (colorDropdown.value == 0)
@@ -292,6 +305,7 @@ public class Customization : MonoBehaviour
         
     }
 
+    //Switches scenes and saves info 
     public void SceneSwitch()
     {
 
@@ -320,6 +334,7 @@ public class Customization : MonoBehaviour
         
     }
 
+    //once the scene is loaded, it works on making things set up
     void OnSceneLoaded(Scene SampleScene,LoadSceneMode single)
     {
         god = GameObject.Find("god");
@@ -344,6 +359,7 @@ public class Customization : MonoBehaviour
         Debug.Log(currentUnitInfo.unitEnergy);
     }
 
+    //Changes UGUI for the user to see via text
     public void ChangingStats()
     {
         if (materialDropdown.value == 0)

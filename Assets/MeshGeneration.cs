@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+//required compenents for this script to prevent errors
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
+
 
 public class Node
 {
@@ -11,8 +13,11 @@ public class Node
     public float ny { get; set; }
     public float nz { get; set; }
 }
+
+
 public class MeshGeneration : MonoBehaviour
 {
+    #region "Vars"
     public Mesh mesh;
     public Mesh mesh2;
     public GameObject circleHolder;
@@ -24,17 +29,9 @@ public class MeshGeneration : MonoBehaviour
     public int j = 0;
     public int temp;
     public MeshCollider meshCollider;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     private void OnEnable()
     {
         mesh = new Mesh()
@@ -47,15 +44,23 @@ public class MeshGeneration : MonoBehaviour
             name = "Attack Mesh"
         };
     }
+
+
+    //Do not mess with this unless you understand what this code is doing. In summary, it is creating a mesh object vertex by vertex
+    //and connecting triagles together via the vertecies.
     public void GenerateMovementMesh()
     {
         mesh.name = "Movement Mesh";
         // calculate movement radius
         radius = 2;
-        //this.gameObject.transform.localScale = new Vector3(.02f, .02f, .02f);
+        
+        //To allow mesh collision of the new mesh that was created
         meshCollider = this.gameObject.AddComponent<MeshCollider>();
         meshCollider.sharedMesh = mesh;
+
         // pick most vital points to create polygon
+
+
         // first quadrant
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(circleHolder.transform.position.x + radius*2), ny = 0, nz = 0 });
         //2
@@ -68,6 +73,7 @@ public class MeshGeneration : MonoBehaviour
         correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI / 2)) * radius * 2), nz = 0 });
         correctedPoints.Add(new Node() { nx = 0, ny = Mathf.RoundToInt(Mathf.Sin(Mathf.PI / 2) * radius * 2), nz = 0 });
 
+
         //8 second quadrant
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * 2) / 3) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * 2) / 3) * radius * 2), nz = 0 });
@@ -78,6 +84,7 @@ public class MeshGeneration : MonoBehaviour
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI) * radius * 2), ny = 0, nz = 0 }); //
 
+
         //14 third quadrant
         correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 0 });
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos((Mathf.PI * -5) / 6) * radius * 2), ny = Mathf.RoundToInt(Mathf.Sin((Mathf.PI * -5) / 6) * radius * 2), nz = 0 });
@@ -87,6 +94,7 @@ public class MeshGeneration : MonoBehaviour
         //18
         correctedPoints.Add(new Node() { nx = correctedPoints[correctedPoints.Count - 1].nx, ny = Mathf.RoundToInt(Mathf.Sin(-Mathf.PI / 2) * radius * 2), nz = 0 });
         correctedPoints.Add(new Node() { nx = 0, ny = -radius * 2, nz = 0 });
+
 
         //20 fourth quadrant
         correctedPoints.Add(new Node() { nx = Mathf.RoundToInt(Mathf.Cos(Mathf.PI / -3) * radius * 2), ny = correctedPoints[correctedPoints.Count - 1].ny, nz = 0 });

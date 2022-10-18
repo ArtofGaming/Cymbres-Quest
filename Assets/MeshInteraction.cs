@@ -5,24 +5,23 @@ using UnityEngine.InputSystem;
 
 public class MeshInteraction : MonoBehaviour
 {
+
+    #region "Vars"
     Ray ray;
     RaycastHit hit;
     public GameObject mesh;
     public Player player;
     public MeshGeneration meshGeneration;
     public GameManager gameManager;
-    // Start is called before the first frame update
+    #endregion
+
+    // grabs gamemanager to keep as a varaible to call back later in the script
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //checks the players in moving the players if they have not moved then having player attack in they have not yet.
     public void Movement()
     {
         
