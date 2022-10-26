@@ -10,6 +10,7 @@ public class Customization : MonoBehaviour
     #region "Customization Vars..."
     public GameObject currentUnit;
     GameObject lastUnit;
+    public GameObject unitPrefab;
     public List<GameObject> units;
     public List<string> colorOptions;
     public TMP_Dropdown materialDropdown;
@@ -21,7 +22,7 @@ public class Customization : MonoBehaviour
     public GameManager gameManager;
     public test Test;
     public GameObject god;
-
+    public int spacesLeft = 3;
 
     public TextMeshProUGUI unitNameText;
     public TextMeshProUGUI unitLevel;
@@ -125,6 +126,13 @@ public class Customization : MonoBehaviour
         lastMaterial = selectedMaterial;
         ShowInfo();
 
+    }
+
+    public void CreateUnitButtons()
+    {
+        GameObject newUnit = Instantiate(unitPrefab);
+        units.Add(newUnit);
+        currentUnit = newUnit;
     }
 
     //Changing out units ? way
