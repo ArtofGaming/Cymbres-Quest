@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hunter : UnitInfo
+public class EnemySolider : UnitInfo
 {
     // Start is called before the first frame update
     void Awake()
     {
-        unitClass = "Hunter";
+        unitClass = "EnemySoldier";
         if (unitLevel == 0)
         {
             unitLevel = 1;
@@ -22,12 +22,12 @@ public class Hunter : UnitInfo
         unitDefense = Mathf.RoundToInt(unitLevel * 1.15f + 5);
         unitEnergy = Mathf.RoundToInt(unitLevel * .75f + 2);
         unitEvasion = Mathf.RoundToInt(unitLevel * .3f + 3);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

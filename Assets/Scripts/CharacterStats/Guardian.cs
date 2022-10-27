@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warrior : UnitInfo
+public class Guardian : UnitInfo
 {
     // Start is called before the first frame update
     void Awake()
     {
-        unitClass = "Warrior";
+        unitClass = "Guardian";
         if (unitLevel == 0)
         {
             unitLevel = 1;
