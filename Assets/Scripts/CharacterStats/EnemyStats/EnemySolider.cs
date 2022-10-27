@@ -14,7 +14,7 @@ public class EnemySolider : UnitInfo
         }
         unitMaxHealth = unitLevel * 3 + 12;
         unitHealth = unitMaxHealth;
-        unitMovementSpeed = .1f;
+        unitMovementSpeed = .1f +(unitLevel * .01f);
         unitAttackRange = .1f;
         unitAttack = Mathf.RoundToInt(unitLevel * 1.15f + 7);
         unitCritChance = 0;
