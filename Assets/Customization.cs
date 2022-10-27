@@ -23,6 +23,9 @@ public class Customization : MonoBehaviour
     public test Test;
     public GameObject god;
     public int spacesLeft = 3;
+    public GameObject creationScreen;
+    public Button clickedUnitButton;
+    public GameObject paintScreen;
 
     public TextMeshProUGUI unitNameText;
     public TextMeshProUGUI unitLevel;
@@ -130,10 +133,27 @@ public class Customization : MonoBehaviour
 
     public void CreateUnitButtons()
     {
+        clickedUnitButton = this.gameObject.GetComponent<Button>();
         GameObject newUnit = Instantiate(unitPrefab);
+        
+        if (units.Count > 0)
+        {
+            units[units.Count - 1].gameObject.SetActive(false);
+        }
         units.Add(newUnit);
+        ShowInfo();
         currentUnit = newUnit;
+        spacesLeft -= 1;
+        
+        if(spacesLeft <= 0)
+        {
+            creationScreen.SetActive(false);
+            paintScreen.SetActive(true);
+        }
+        Debug.Log(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text);
+        //return clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text;
     }
+
 
     //Changing out units ? way
     public void NextClick()
@@ -364,6 +384,7 @@ public class Customization : MonoBehaviour
         unitEvasion.text = "Evasion: " + currentUnitInfo.unitEvasion.ToString();
         unitEnergy.text = "Energy: " + currentUnitInfo.unitEnergy.ToString();
         unitMovementSpeed.text = "Move Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
+        unitAttackRange.text = "Attack Range: " + currentUnitInfo.unitAttackRange.ToString();
         Debug.Log(currentUnitInfo.unitEnergy);
     }
 
