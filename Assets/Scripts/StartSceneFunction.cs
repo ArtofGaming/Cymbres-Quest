@@ -8,6 +8,7 @@ public class StartSceneFunction : MonoBehaviour
 {
     private bool OptionIsOn = false;
     public GameObject OptionsPanel;
+    public GameObject MainMenu;
 
     public void NewGamePressed()
     {
@@ -25,12 +26,14 @@ public class StartSceneFunction : MonoBehaviour
         if(OptionIsOn == false)
         {
             OptionIsOn = true;
+            MainMenu.SetActive(false);
             OptionsPanel.SetActive(true);
             Debug.Log("Options are now to be shown");
         }
         else if(OptionIsOn == true)
         {
             OptionIsOn=false;
+            MainMenu.SetActive(true);
             OptionsPanel.SetActive(false);  
             Debug.Log("Options are now turned off");
         }
