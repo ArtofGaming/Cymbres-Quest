@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
+using UnityEngine.EventSystems;
 
 public class Customization : MonoBehaviour
 {
@@ -23,9 +25,10 @@ public class Customization : MonoBehaviour
     public test Test;
     public GameObject god;
     public int spacesLeft = 3;
-    public GameObject creationScreen;
+    public GameObject choiceHolder;
     public Button clickedUnitButton;
-    public GameObject paintScreen;
+    public GameObject dropdownHolder;
+    public GameObject navigationHolder;
 
     public TextMeshProUGUI unitNameText;
     public TextMeshProUGUI unitLevel;
@@ -51,12 +54,12 @@ public class Customization : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        /*for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
         {
             DontDestroyOnLoad(GameObject.FindGameObjectsWithTag("Player")[i]);
             units.Add(GameObject.FindGameObjectsWithTag("Player")[i]);
             
-        }
+        }*/
 
     }
 
@@ -115,9 +118,9 @@ public class Customization : MonoBehaviour
             colorDropdown.options.Add(option);
         }
 
-        units[0].transform.localPosition = new Vector3(0, 1, (float).72);
-        currentUnit = units[0];
-        foreach(GameObject unit in units)
+        //units[0].transform.localPosition = new Vector3(0, 1, (float).72);
+        //currentUnit = units[0];
+        /*foreach(GameObject unit in units)
         {
             if (unit != currentUnit)
             {
@@ -126,32 +129,45 @@ public class Customization : MonoBehaviour
         }
         currentUnitInfo = currentUnit.GetComponent<UnitInfo>();
         selectedMaterial = currentUnit.GetComponent<Renderer>().materials[materialDropdown.value];
-        lastMaterial = selectedMaterial;
+        lastMaterial = selectedMaterial;*/
         ShowInfo();
 
     }
 
     public void CreateUnitButtons()
     {
-        clickedUnitButton = this.gameObject.GetComponent<Button>();
+        clickedUnitButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         GameObject newUnit = Instantiate(unitPrefab);
-        
+        newUnit.transform.localPosition = new Vector3(0, -.5f, 3);
+        if (clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Warrior")
+        {
+            newUnit.AddComponent<Warrior>();
+        }
+        else if(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Hunter")
+        {
+            newUnit.AddComponent<Hunter>();
+        }
+        else
+        {
+            newUnit.AddComponent<Guardian>();
+        }
         if (units.Count > 0)
         {
             units[units.Count - 1].gameObject.SetActive(false);
         }
+        currentUnit = newUnit;
+        currentUnitInfo = newUnit.GetComponent<UnitInfo>();
         units.Add(newUnit);
         ShowInfo();
         currentUnit = newUnit;
         spacesLeft -= 1;
-        
         if(spacesLeft <= 0)
         {
-            creationScreen.SetActive(false);
-            paintScreen.SetActive(true);
+            choiceHolder.SetActive(false);
+            dropdownHolder.SetActive(true);
+            navigationHolder.SetActive(true);
         }
         Debug.Log(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text);
-        //return clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text;
     }
 
 
@@ -171,7 +187,7 @@ public class Customization : MonoBehaviour
 
         //changes settings to hide prev unit and set current unit active. Shows info of the unit as well.
         lastUnit.SetActive(false);
-        currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
+        //currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
         selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
         currentUnit.SetActive(true);
         currentUnitInfo = currentUnit.GetComponent<UnitInfo>();
@@ -196,9 +212,9 @@ public class Customization : MonoBehaviour
         //changes settings to hide prev unit and set current unit active. Shows info of the unit as well.
         lastUnit.SetActive(false);
         currentUnit.SetActive(true);
-        currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
+        //currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
         selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
-        currentUnitInfo = currentUnit.GetComponent<Warrior>();
+        currentUnitInfo = currentUnit.GetComponent<UnitInfo>();
         ShowInfo();
         
     }
@@ -207,10 +223,10 @@ public class Customization : MonoBehaviour
     //not found anywhere? Is this used or just deleted? 
     public void ChangeMaterial()
     {
-        if(materialDropdown.value == 0)
+        if(materialDropdown.value == 2)
         {
             lastMaterial = selectedMaterial;
-            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
+            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[1];
 
         }
         else if (materialDropdown.value == 1)
@@ -221,31 +237,15 @@ public class Customization : MonoBehaviour
         else
         {
             lastMaterial = selectedMaterial;
-            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[1];
+            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
         }
     }
 
     //Use showInfo function to clean up this code?
     public void ChangeColor()
     {
-        if (colorDropdown.value == 0)
-        {
-            if (lastMaterial == selectedMaterial)
-            {
-                unitAttack.text = "Attack: " + currentUnitInfo.unitAttack.ToString();
-                unitEnergy.text = "Energy: " + currentUnitInfo.unitEnergy.ToString();
-                unitCrit.text = "Crit Rate: " + currentUnitInfo.unitCritChance.ToString();
-                unitDebuffResist.text = "Debuff Resist: " + currentUnitInfo.unitSkillResist.ToString();
-                unitHealth.text = "Health: " + currentUnitInfo.unitHealth.ToString();
-                unitDefense.text = "Defense: " + currentUnitInfo.unitDefense.ToString();
-                unitMovementSpeed.text = "Move Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
-                unitEnergy.text = "Attack Range: " + currentUnitInfo.unitAttackRange.ToString();
-                unitEvasion.text = "Evasion: " + currentUnitInfo.unitEvasion.ToString();
-            }
-            selectedMaterial.color = new Color(1,0,0,1);
-            ChangingStats();
-        }
-        else if (colorDropdown.value == 1)
+        
+        if (colorDropdown.value == 1)
         {
             if (lastMaterial == selectedMaterial)
             {
@@ -313,7 +313,7 @@ public class Customization : MonoBehaviour
             selectedMaterial.color = new Color(0,1,0,1);
             ChangingStats();
         }
-        else
+        else if(colorDropdown.value == 5)
         {
             if (lastMaterial == selectedMaterial)
             {
@@ -330,7 +330,24 @@ public class Customization : MonoBehaviour
             selectedMaterial.color = new Color(.5f,.5f,0,1);
             ChangingStats();
         }
-        
+        else
+        {
+            if (lastMaterial == selectedMaterial)
+            {
+                unitAttack.text = "Attack: " + currentUnitInfo.unitAttack.ToString();
+                unitEnergy.text = "Energy: " + currentUnitInfo.unitEnergy.ToString();
+                unitCrit.text = "Crit Rate: " + currentUnitInfo.unitCritChance.ToString();
+                unitDebuffResist.text = "Debuff Resist: " + currentUnitInfo.unitSkillResist.ToString();
+                unitHealth.text = "Health: " + currentUnitInfo.unitHealth.ToString();
+                unitDefense.text = "Defense: " + currentUnitInfo.unitDefense.ToString();
+                unitMovementSpeed.text = "Move Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
+                unitEnergy.text = "Attack Range: " + currentUnitInfo.unitAttackRange.ToString();
+                unitEvasion.text = "Evasion: " + currentUnitInfo.unitEvasion.ToString();
+            }
+            selectedMaterial.color = new Color(1, 0, 0, 1);
+            ChangingStats();
+        }
+
     }
 
     //Switches scenes and saves info 
@@ -348,8 +365,8 @@ public class Customization : MonoBehaviour
         currentUnitInfo.unitMovementSpeed += .05f * currentUnit.GetComponent<Renderer>().materials[1].color.r * currentUnitInfo.unitMovementSpeed;
         currentUnitInfo.unitAttackRange += .05f * currentUnit.GetComponent<Renderer>().materials[1].color.g * currentUnitInfo.unitEnergy;
         currentUnitInfo.unitEvasion += Mathf.RoundToInt(.25f * currentUnit.GetComponent<Renderer>().materials[1].color.b * currentUnitInfo.unitCritChance);
-        
-        SceneManager.LoadScene("SampleScene");
+
+        SceneManager.LoadScene("Battle Scene");
         for (int i = 0; i < units.Count; i++)
         {
             DontDestroyOnLoad(units[i]);
@@ -365,27 +382,48 @@ public class Customization : MonoBehaviour
     //once the scene is loaded, it works on making things set up
     void OnSceneLoaded(Scene SampleScene,LoadSceneMode single)
     {
-        god = GameObject.Find("god");
+        god = GameObject.Find("GameManager");
         gameManager = god.GetComponent<GameManager>();
         gameManager.attackingUnit = currentUnit;
+        this.enabled = false;
     }
 
     public void ShowInfo()
     {
-        unitNameText.text = "Name: " + currentUnitInfo.unitName;
-        unitLevel.text = "Level: " + currentUnitInfo.unitLevel.ToString();
-        unitClass.text = "Class: " + currentUnitInfo.unitClass;
-        unitAttack.text = "Attack: " + currentUnitInfo.unitAttack.ToString();
-        unitDefense.text = "Defense: " + currentUnitInfo.unitDefense.ToString();
-        unitHealth.text = currentUnitInfo.unitMaxHealth.ToString();
-        unitSpeed.text = "Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
-        unitCrit.text = "Crit Chance: " + currentUnitInfo.unitCritChance.ToString();
-        unitDebuffResist.text = "Skill Resist.: " + currentUnitInfo.unitSkillResist.ToString();
-        unitEvasion.text = "Evasion: " + currentUnitInfo.unitEvasion.ToString();
-        unitEnergy.text = "Energy: " + currentUnitInfo.unitEnergy.ToString();
-        unitMovementSpeed.text = "Move Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
-        unitAttackRange.text = "Attack Range: " + currentUnitInfo.unitAttackRange.ToString();
-        Debug.Log(currentUnitInfo.unitEnergy);
+        if(currentUnitInfo == null)
+        {
+            unitNameText.text = "Name: ";
+            unitLevel.text = "Level: ";
+            unitClass.text = "Class: ";
+            unitAttack.text = "Attack: ";
+            unitDefense.text = "Defense: ";
+            unitHealth.text = "Health: ";
+            unitSpeed.text = "Speed: ";
+            unitCrit.text = "Crit Chance: ";
+            unitDebuffResist.text = "Skill Resist.: ";
+            unitEvasion.text = "Evasion: ";
+            unitEnergy.text = "Energy: ";
+            unitMovementSpeed.text = "Move Speed: ";
+            unitAttackRange.text = "Attack Range: ";
+        }
+        else
+        {
+            unitNameText.text = "Name: " + currentUnitInfo.unitName;
+            unitLevel.text = "Level: " + currentUnitInfo.unitLevel.ToString();
+            unitClass.text = "Class: " + currentUnitInfo.unitClass;
+            unitAttack.text = "Attack: " + currentUnitInfo.unitAttack.ToString();
+            unitDefense.text = "Defense: " + currentUnitInfo.unitDefense.ToString();
+            unitHealth.text = "Health: " + currentUnitInfo.unitMaxHealth.ToString();
+            unitSpeed.text = "Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
+            unitCrit.text = "Crit Chance: " + currentUnitInfo.unitCritChance.ToString();
+            unitDebuffResist.text = "Skill Resist.: " + currentUnitInfo.unitSkillResist.ToString();
+            unitEvasion.text = "Evasion: " + currentUnitInfo.unitEvasion.ToString();
+            unitEnergy.text = "Energy: " + currentUnitInfo.unitEnergy.ToString();
+            unitMovementSpeed.text = "Move Speed: " + currentUnitInfo.unitMovementSpeed.ToString();
+            unitAttackRange.text = "Attack Range: " + currentUnitInfo.unitAttackRange.ToString();
+            Debug.Log(currentUnitInfo.unitEnergy);
+        }
+        
     }
 
     //Changes UGUI for the user to see via text
