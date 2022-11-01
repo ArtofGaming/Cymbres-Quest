@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySolider : UnitInfo
+public class EnemyTutorialSolider : UnitInfo
 {
     // Start is called before the first frame update
     void Awake()
     {
-        unitClass = "EnemySoldier";
+        unitClass = "EnemyTutorialSoldier";
         if (unitLevel == 0)
         {
             unitLevel = 1;
         }
-        unitMaxHealth = unitLevel * 3 + 12;
+        unitMaxHealth = 20;
         unitHealth = unitMaxHealth;
-        unitMovementSpeed = .1f +(unitLevel * .01f);
+        unitMovementSpeed = .11f;
         unitAttackRange = .1f;
-        unitAttack = Mathf.RoundToInt(unitLevel * 1.15f + 7);
+        unitAttack = 7;
         unitCritChance = 0;
-        unitSkillResist = Mathf.RoundToInt(unitLevel * .5f + 1);
-        unitDefense = Mathf.RoundToInt(unitLevel * 1.15f + 2);
+        unitSkillResist = 5;
+        unitDefense = 5;
         unitEnergy = 0;
         unitEvasion = 0;
 

@@ -12,16 +12,16 @@ public class Guardian : UnitInfo
         {
             unitLevel = 1;
         }
-        unitMaxHealth = unitLevel * 3 + 12;
+        unitMaxHealth = unitLevel + 1 + 20;
         unitHealth = unitMaxHealth;
         unitMovementSpeed = unitLevel * .15f - .05f;
         unitAttackRange = unitLevel * .15f - .05f;
-        unitAttack = Mathf.RoundToInt(unitLevel * 1.15f + 7);
+        unitAttack = Mathf.RoundToInt(unitLevel * 1.15f + 5);
         unitCritChance = Mathf.RoundToInt(unitLevel * .15f + 4);
-        unitSkillResist = Mathf.RoundToInt(unitLevel * .5f + 4);
+        unitSkillResist = Mathf.RoundToInt(unitLevel * .5f + 5);
         unitDefense = Mathf.RoundToInt(unitLevel * 1.15f + 5);
         unitEnergy = Mathf.RoundToInt(unitLevel * .75f + 2);
-        unitEvasion = Mathf.RoundToInt(unitLevel * .3f + 3);
+        unitEvasion = Mathf.RoundToInt(unitLevel * .3f + 2);
         
     }
 
