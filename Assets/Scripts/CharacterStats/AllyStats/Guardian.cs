@@ -12,7 +12,7 @@ public class Guardian : UnitInfo
         {
             unitLevel = 1;
         }
-        unitMaxHealth = unitLevel + 1 + 20;
+        unitMaxHealth = unitLevel + 21;
         unitHealth = unitMaxHealth;
         unitMovementSpeed = unitLevel * .15f - .05f;
         unitAttackRange = unitLevel * .15f - .05f;

@@ -12,7 +12,7 @@ public class Warrior : UnitInfo
         {
             unitLevel = 1;
         }
-        unitMaxHealth = unitLevel + 1 + 10;
+        unitMaxHealth = unitLevel + 10;
         unitHealth = unitMaxHealth;
         unitMovementSpeed = unitLevel * .15f - .05f;
         unitAttackRange = unitLevel * .15f - .05f;

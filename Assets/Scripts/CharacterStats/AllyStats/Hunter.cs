@@ -12,7 +12,7 @@ public class Hunter : UnitInfo
         {
             unitLevel = 1;
         }
-        unitMaxHealth = unitLevel + 1 + 15;
+        unitMaxHealth = unitLevel + 15;
         unitHealth = unitMaxHealth;
         unitMovementSpeed = unitLevel * .15f - .05f;
         unitAttackRange = unitLevel * .05f + .1f;
