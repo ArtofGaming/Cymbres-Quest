@@ -15,7 +15,7 @@ public class Hunter : UnitInfo
         unitMaxHealth = unitLevel + 1 + 15;
         unitHealth = unitMaxHealth;
         unitMovementSpeed = unitLevel * .15f - .05f;
-        unitAttackRange = unitLevel * .15f - .05f;
+        unitAttackRange = unitLevel * .05f + .1f;
         unitAttack = Mathf.RoundToInt(unitLevel * 1.15f + 6);
         unitCritChance = Mathf.RoundToInt(unitLevel * .15f + 4);
         unitSkillResist = Mathf.RoundToInt(unitLevel * .5f + 4);
