@@ -14,7 +14,7 @@ public class GridMovement : MonoBehaviour
     public Material movementMaterial;
     public bool attackPossible;
     public string unitClass;
-    public Customization customization;
+    //public Customization customization;
     GameManager gameManager;
     public bool added = false;
     int unitsMoved = 0;
@@ -28,10 +28,10 @@ public class GridMovement : MonoBehaviour
     void Start()
     {
         attackPossible = false;
-        customization = GameObject.Find("boss").GetComponent<Customization>();
-        gameManager = GameObject.Find("god").GetComponent<GameManager>();
+        //customization = GameObject.Find("boss").GetComponent<Customization>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.selectedUnit = gameManager.aliveUnits[0];
-        infoPopulation = GameObject.Find("Unit Information").GetComponent<InfoPopulation>();
+        infoPopulation = this.gameObject.GetComponent<InfoPopulation>();
     }
 
 

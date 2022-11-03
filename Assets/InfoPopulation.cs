@@ -29,7 +29,7 @@ public class InfoPopulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("god").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
     }
 

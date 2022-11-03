@@ -53,7 +53,7 @@ public class Customization : MonoBehaviour
     //grab all units which are the player's units and place them into a list to keep track
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         /*for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
         {
             DontDestroyOnLoad(GameObject.FindGameObjectsWithTag("Player")[i]);
@@ -385,7 +385,7 @@ public class Customization : MonoBehaviour
         god = GameObject.Find("GameManager");
         gameManager = god.GetComponent<GameManager>();
         gameManager.attackingUnit = currentUnit;
-        this.enabled = false;
+        //this.enabled = false;
     }
 
     public void ShowInfo()
