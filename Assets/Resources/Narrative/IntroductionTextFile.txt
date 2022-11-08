@@ -7,7 +7,7 @@ Three armed soldiers make their way onto an open field, standing opposed to them
 CAPTAIN
 Are you sure these sparring sessions are necessary Conductor? Your student's dolls collapse before my men can even hit them.
 CONDUCTOR
-That is what training is for, Captain. The point is to improve. You should know the importance of practice better then anyone else here.
+That is what training is for, Captain. The point is to improve. You should know the importance of practice better than anyone else here.
 CAPTAIN
 I know I know... My concern is that it's hard for your student to improve if they can even begin the training. My men are growing tired, almost seems like a waste.
 CONDUCTOR
@@ -21,13 +21,13 @@ Hm, then let's hope they're able to conduct this time. What's taking so long any
 CONDUCTOR
 Cymbre is probably giving them some advice, the dolls will be out and fighting shortly.
 CAPTAIN
-You really think she'll make that happen?
+Do you really think she'll make that happen?
 CONDUCTOR
 With certainty.
 CAPTAIN
 Do you even have a way to check on them? Their tent is so far away that you can't even hear a word they're saying.
 CONDUCTOR
-Conducting requires an intense amount of concentration and focus. The less distractions, the better.
+Conducting requires an intense amount of concentration and focus. The fewer distractions, the better.
 CAPTAIN
 So you sent another person in there to help? That doesn't make sense.
 CONDUCTOR
@@ -35,7 +35,7 @@ Trust the process, her help will get the needed results.
 CAPTAIN
 If you say so...
 
-The entrance of the tent swings open as Cymbre enters. A large flat stone stands in the center with A young student sitting in a chair placed on the far side of it. The student whips their head up with a suprised expression.
+The entrance of the tent swings open as Cymbre enters. A large flat stone stands in the center with A young student sitting in a chair placed on the far side of it. The student whips their head up with a surprised expression.
 STUDENT
 Hi-I-uh I-I'm so sorry! I'll get it right this time I promise!
 CYMBRE
@@ -45,7 +45,7 @@ W-W-What?
 CYMBRE
 Quite the opposite actually, I'm here to help.
 STUDENT
-Wait really?! Oh thank goodness!
+Wait really?! Oh, thank goodness!
 CYMBRE
 To start, take a deep breath.
 STUDENT
@@ -61,7 +61,7 @@ Right!
 
 The student takes a deep breath.
 CYMBRE
-I don't mean to be rude, but that right there's the problem. You're spending so much time worry about other people and what they're thinking. All you should be worried about is what's in front of you.
+I don't mean to be rude, but that right there's the problem. You're spending so much time worrying about other people and what they're thinking. All you should be worried about is what's in front of you.
 
 She gestures to the table. The student nods in agreement while reaching for an object that resembles a chess piece.
 CYMBRE
@@ -71,11 +71,11 @@ The student follows her commands with a confused look on their face
 STUDENT
 Ok...
 CYMBRE
-It's a little dramatic, but trust me it'll help. Straining your arm and using that much force is a useful trick that pushes you to give your all when summoning. Once you get more experienced with conducting you won't have to relay on it...
+It's a little dramatic, but trust me it'll help. Straining your arm and using that much force is a useful trick that pushes you to give your all when summoning. Once you get more experienced with conducting you won't have to rely on it...
 CYMBRE
 Hold that pose for a bit, and take some time to clear your thoughts. Focus solely on the task at hand, and when you think you're ready, slam it down.
 
-Slience falls for a few moments.
+Silence falls for a few moments.
 CYMBRE
 Excellent, do it two more times, and then we'll begin.
 
