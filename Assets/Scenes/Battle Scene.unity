@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -321,7 +321,7 @@ RectTransform:
   m_Children:
   - {fileID: 990123833}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1072,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5479984230290179322, guid: 82ef6e7b971500b4eb3e426d5f66e0a5, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5479984230290179322, guid: 82ef6e7b971500b4eb3e426d5f66e0a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1213,7 +1213,7 @@ RectTransform:
   m_Children:
   - {fileID: 54604812}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1571,6 +1571,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544485396}
   m_CullTransparentMesh: 1
+--- !u!1 &1733264604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2264283597670026505, guid: 9936d388b5ab3954190eb2cb0e45bfbb, type: 3}
+  m_PrefabInstance: {fileID: 1417842503814302759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1733264613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733264604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7f63999a8d31241955961161ced0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: 
+  unitLevel: 0
+  currentUnitExperience: 0
+  maxUnitExperience: 0
+  unitClass: 
+  unitAttack: 0
+  unitDefense: 0
+  unitHealth: 0
+  unitMovementSpeed: 0
+  unitAttackRange: 0
+  unitEvasion: 0
+  unitCritChance: 0
+  unitMaxHealth: 0
+  unitSkill: 
+  unitWeapon: 
+  unitEnergy: 0
+  unitSkillResist: 0
 --- !u!1 &1802468203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,36 +1726,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802468203}
   m_CullTransparentMesh: 1
---- !u!1 &1807109127
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1807109128}
-  m_Layer: 0
-  m_Name: DummySO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1807109128
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807109127}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857511072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128028657806191227, guid: d7d88669bc84e5f48899f04e5f57b374, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3128028657806191227, guid: d7d88669bc84e5f48899f04e5f57b374, type: 3}
       propertyPath: m_LocalPosition.x

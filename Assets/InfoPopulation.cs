@@ -8,15 +8,25 @@ public class InfoPopulation : MonoBehaviour
 {
     
     #region "Variables in InfoPopulation"
+    [HideInInspector]
     public TextMeshProUGUI unitNameText;
+    [HideInInspector]
     public TextMeshProUGUI unitLevel;
+    [HideInInspector]
     public TextMeshProUGUI unitClass;
+    [HideInInspector]
     public TextMeshProUGUI unitAttack;
+    [HideInInspector]
     public TextMeshProUGUI unitDefense;
+    [HideInInspector]
     public TextMeshProUGUI unitHealth;
+    [HideInInspector]
     public TextMeshProUGUI unitSpeed;
+    [HideInInspector]
     public TextMeshProUGUI unitCrit;
+    [HideInInspector]
     public TextMeshProUGUI unitDebuffResist;
+    [HideInInspector]
     public TextMeshProUGUI unitEvasion;
     //public TextMeshProUGUI unitHealthResist;
     public GameObject unitInfoPanel;
@@ -29,7 +39,7 @@ public class InfoPopulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("boss").GetComponent<GameManager>();
         gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
     }
 
@@ -43,8 +53,8 @@ public class InfoPopulation : MonoBehaviour
     {
         if (selectedCollider.gameObject.tag == "Player")
         {
-            selectedObject = selectedCollider.gameObject.GetComponentInParent<UnitInfo>();
-            gridMovement = selectedCollider.gameObject.GetComponentInChildren<GridMovement>();
+            selectedObject = selectedCollider.gameObject.GetComponent<UnitInfo>();
+            gridMovement = selectedCollider.gameObject.GetComponent<GridMovement>();
 
             unitInfoPanel.SetActive(true);
 
