@@ -29,7 +29,7 @@ public class UnitInfo : MonoBehaviour
 
     void Start()
     {
-        customization = GameObject.Find("boss").GetComponent<Customization>();
+        //customization = GameObject.Find("boss").GetComponent<Customization>();
     }
 
 

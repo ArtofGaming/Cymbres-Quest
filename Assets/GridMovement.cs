@@ -29,7 +29,7 @@ public class GridMovement : MonoBehaviour
     {
         attackPossible = false;
         //customization = GameObject.Find("boss").GetComponent<Customization>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("boss").GetComponent<GameManager>();
         gameManager.selectedUnit = gameManager.aliveUnits[0];
         infoPopulation = this.gameObject.GetComponent<InfoPopulation>();
     }
@@ -44,7 +44,7 @@ public class GridMovement : MonoBehaviour
     private void OnMouseDown()
     {
         
-        gameManager.selectedUnit = collider.transform.parent.gameObject;
+        gameManager.selectedUnit = collider.transform.gameObject;
         if (gameManager.selectedUnit.tag == "Player" && gameManager.whoseTurn == "Player" && selected != "player")
         {
             Debug.Log("Mouse Down");
