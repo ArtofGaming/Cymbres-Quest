@@ -119,14 +119,14 @@ public class Customization : MonoBehaviour
         }
 
         //units[0].transform.localPosition = new Vector3(0, 1, (float).72);
-        //currentUnit = units[0];
-        /*foreach(GameObject unit in units)
+        /*currentUnit = units[0];
+        foreach(GameObject unit in units)
         {
             if (unit != currentUnit)
             {
                 unit.SetActive(false);
             }
-        }
+        }*
         currentUnitInfo = currentUnit.GetComponent<UnitInfo>();
         selectedMaterial = currentUnit.GetComponent<Renderer>().materials[materialDropdown.value];
         lastMaterial = selectedMaterial;*/
@@ -142,16 +142,20 @@ public class Customization : MonoBehaviour
         if (clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Warrior")
         {
             newUnit.AddComponent<Warrior>();
+            units.Add(newUnit);
+
         }
         else if(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Hunter")
         {
             newUnit.AddComponent<Hunter>();
+            units.Add(newUnit);
         }
         else
         {
             newUnit.AddComponent<Guardian>();
+            units.Add(newUnit);
         }
-        if (units.Count > 0)
+        if (units.Count > 0 && units.Count != 1)
         {
             units[units.Count - 1].gameObject.SetActive(false);
         }
@@ -166,6 +170,7 @@ public class Customization : MonoBehaviour
             choiceHolder.SetActive(false);
             dropdownHolder.SetActive(true);
             navigationHolder.SetActive(true);
+            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
         }
         Debug.Log(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text);
     }
