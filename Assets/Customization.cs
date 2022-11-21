@@ -387,7 +387,7 @@ public class Customization : MonoBehaviour
     //once the scene is loaded, it works on making things set up
     void OnSceneLoaded(Scene SampleScene,LoadSceneMode single)
     {
-        god = GameObject.Find("GameManager");
+        god = GameObject.Find("boss");
         gameManager = god.GetComponent<GameManager>();
         gameManager.attackingUnit = currentUnit;
         //this.enabled = false;
