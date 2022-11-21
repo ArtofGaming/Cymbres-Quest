@@ -39,11 +39,11 @@ public class EnemyAI : MonoBehaviour
     {
         Debug.Log("Over enemy");
         infoPopulation.selectedCollider = this.gameObject.GetComponent<Collider>();
-        infoPopulation.Activate();
+        //infoPopulation.Activate();
     }
     private void OnMouseExit()
     {
-        infoPopulation.selectedCollider = null;
-        infoPopulation.unitInfoPanel.GetComponent<RectTransform>().localPosition = new Vector3(2000, 1000, 1000);
+        //infoPopulation.selectedCollider = null;
+        //infoPopulation.unitInfoPanel.GetComponent<RectTransform>().localPosition = new Vector3(2000, 1000, 1000);
     }
 }

@@ -9,7 +9,7 @@ public class GridMovement : MonoBehaviour
     public Ray ray;
     public string selected = "";
     Collider myCollider;
-    private float movementReach = 0;
+    private float movementReach = 4;
     public bool moved = false;
     public Material movementMaterial;
     public bool attackPossible;
@@ -44,7 +44,7 @@ public class GridMovement : MonoBehaviour
     private void OnMouseDown()
     {
         
-        gameManager.selectedUnit = collider.transform.gameObject;
+            gameManager.selectedUnit = collider.transform.gameObject;
         if (gameManager.selectedUnit.tag == "Player" && gameManager.whoseTurn == "Player" && selected != "player")
         {
             Debug.Log("Mouse Down");
@@ -53,7 +53,7 @@ public class GridMovement : MonoBehaviour
             // Show area that is movable
             gameManager.selectedUnit.transform.GetChild(0).localScale = new Vector3((float)movementReach, (float).002, (float)movementReach);
             myCollider = gameManager.selectedUnit.GetComponentInChildren<MeshCollider>();
-            myCollider.gameObject.GetComponentInChildren<Renderer>().material = movementMaterial;
+            //myCollider.gameObject.GetComponentInChildren<Renderer>().material = movementMaterial;
             selected = "player";
             gameManager.gridMovement = gameManager.selectedUnit.GetComponentInChildren<GridMovement>();
         }
@@ -76,13 +76,13 @@ public class GridMovement : MonoBehaviour
     private void OnMouseOver()
     {
         infoPopulation.selectedCollider = this.gameObject.GetComponent<Collider>();
-        infoPopulation.Activate();
+        //infoPopulation.Activate();
     }
 
     private void OnMouseExit()
     {
-        infoPopulation.selectedCollider = null;
-        infoPopulation.unitInfoPanel.GetComponent<RectTransform>().localPosition = new Vector3(2000, 1000, 1000);
+        //infoPopulation.selectedCollider = null;
+        //infoPopulation.unitInfoPanel.GetComponent<RectTransform>().localPosition = new Vector3(2000, 1000, 1000);
     }
 
 }

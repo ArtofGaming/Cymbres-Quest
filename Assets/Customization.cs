@@ -155,15 +155,20 @@ public class Customization : MonoBehaviour
             newUnit.AddComponent<Guardian>();
             units.Add(newUnit);
         }
-        if (units.Count > 0 && units.Count != 1)
+
+        if (units.Count > 1)
         {
-            units[units.Count - 1].gameObject.SetActive(false);
+            lastUnit.SetActive(false);
+            currentUnit = newUnit;
+            currentUnitInfo = newUnit.GetComponent<UnitInfo>();
+            lastUnit = currentUnit;
         }
-        currentUnit = newUnit;
-        currentUnitInfo = newUnit.GetComponent<UnitInfo>();
-        units.Add(newUnit);
+        else
+        {
+            lastUnit = newUnit;
+            currentUnitInfo = newUnit.GetComponent<UnitInfo>();
+        }
         ShowInfo();
-        currentUnit = newUnit;
         spacesLeft -= 1;
         if(spacesLeft <= 0)
         {

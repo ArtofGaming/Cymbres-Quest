@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class InfoPopulation : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class InfoPopulation : MonoBehaviour
     [HideInInspector]
     public TextMeshProUGUI unitEvasion;
     //public TextMeshProUGUI unitHealthResist;
-    public GameObject unitInfoPanel;
+    public GameObject unitInfoPanel = null;
     public GameManager gameManager;
     public UnitInfo selectedObject;
     public GridMovement gridMovement;
@@ -39,8 +40,7 @@ public class InfoPopulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("boss").GetComponent<GameManager>();
-        gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
+        SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
     // Update is called once per frame
@@ -115,5 +115,13 @@ public class InfoPopulation : MonoBehaviour
         }
         
         
+    }
+
+    void ChangedActiveScene(Scene current, Scene next)
+    {
+        gameManager = GameObject.Find("boss").GetComponent<GameManager>();
+        gameObject.AddComponent<GridMovement>();
+        gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<GridMovement>();
+        gridMovement.collider = this.GetComponent<CapsuleCollider>();
     }
 }
