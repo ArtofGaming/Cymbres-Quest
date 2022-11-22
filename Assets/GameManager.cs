@@ -46,7 +46,27 @@ public class GameManager : MonoBehaviour
         attackingUnit = null;
         whoseTurn = "Player";
 
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
+        #region "Grabbing player units position and set active; grabs enemies units"
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Player").Length; i++)
+        {
+            //Debug.Log(GameObject.FindGameObjectsWithTag("Spawn").Length);
+
+        }
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            aliveUnits.Add(unit);
+            //unit.gameObject.transform.localPosition = GameObject.FindGameObjectsWithTag("Spawn")[aliveUnits.IndexOf(unit)].gameObject.transform.localPosition;
+            //Debug.Log(unit.transform.childCount);
+            //unit.transform.GetChild(0).Set
+        }
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+
+            aliveEnemyUnits.Add(unit);
+        }
+        #endregion
+
 
         TurnSwitch();
 
@@ -56,7 +76,11 @@ public class GameManager : MonoBehaviour
     //grabs grid movement
     private void Start()
     {
-        gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
+        for(int x =0; x < aliveUnits.Count; x++)
+        {
+            aliveUnits[x].transform.position += new Vector3(x,0, 0);
+        }
+        //gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
     }
 
     // Update is called once per frame

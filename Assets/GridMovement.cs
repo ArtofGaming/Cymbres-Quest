@@ -44,7 +44,8 @@ public class GridMovement : MonoBehaviour
     private void OnMouseDown()
     {
         
-            gameManager.selectedUnit = collider.transform.gameObject;
+            gameManager.selectedUnit = this.transform.gameObject;
+        Debug.Log(gameManager.selectedUnit);
         if (gameManager.selectedUnit.tag == "Player" && gameManager.whoseTurn == "Player" && selected != "player")
         {
             Debug.Log("Mouse Down");
@@ -76,6 +77,7 @@ public class GridMovement : MonoBehaviour
     private void OnMouseOver()
     {
         infoPopulation.selectedCollider = this.gameObject.GetComponent<Collider>();
+        Debug.Log(infoPopulation.selectedCollider.transform.position);
         //infoPopulation.Activate();
     }
 
