@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Linq;
 
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public int finishedUnits;
     public List <GameObject> enemySpeedList;
     GameObject fastestUnit;
-    public TextMeshPro damageText;
+    public TextMeshProUGUI damageText;
     public List <int> unitDistance;
     #endregion
 
@@ -87,25 +88,27 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Grid movement for the player units
-        if (gridMovement == null)
+        /*if (gridMovement == null)
         {
             if(aliveUnits.Count > 0)
             {
                 gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
             }
             
-        }
+        }*/
+        if (false) 
+            ;
         else
         {
-            if (gridMovement.attackPossible == true)
+            if (gridMovement != null && gridMovement.attackPossible == true)
             {
-                
+
                 //Attack Calculation
                 if (attackingUnit == null)
                 {
                     attackingUnit = selectedUnit;
                     Debug.Log("Its " + attackingUnit);
-                    attackButton.gameObject.SetActive(false);
+                    //attackButton.gameObject.SetActive(false);
                 }
             }
             else
@@ -133,6 +136,7 @@ public class GameManager : MonoBehaviour
         if(aliveEnemyUnits.Count <= 0)
         {
             Debug.Log("You Win!");
+            SceneManager.LoadScene("WinScene");
         }
 
         //selection of units for the player, shows in green
@@ -153,7 +157,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Enemy's Turn");
             for (int i = 0; i < aliveUnits.Count; i++)
             {
-                aliveUnits[i].transform.GetChild(0).gameObject.SetActive(true);
+                aliveUnits[i].transform.gameObject.SetActive(true);
             }
             StartCoroutine(EnemyAttack());
             finishedUnits = 0;
@@ -169,7 +173,7 @@ public class GameManager : MonoBehaviour
                 foreach (GameObject ally in aliveUnits)
                 {
                     Debug.Log("reseting moved");
-                    gridMovement = ally.gameObject.GetComponentInChildren<GridMovement>();
+                    gridMovement = ally.gameObject.GetComponent<GridMovement>();
                     gridMovement.attackPossible = false;
                     gridMovement.moved = false;
                     ally.transform.GetChild(0).gameObject.SetActive(false);
@@ -188,7 +192,7 @@ public class GameManager : MonoBehaviour
     //Unit attack, checks unit attacking, enemy health low, and counter attack for the unit
     public void UnitAttack()
     {
-        gridMovement = selectedUnit.GetComponentInChildren<GridMovement>();
+        gridMovement = selectedUnit.GetComponent<GridMovement>();
         attackingUnit = selectedUnit;
         attackingEnemyUnit = selectedEnemy;
         attackingEnemyInfo = attackingEnemyUnit.GetComponent<UnitInfo>();

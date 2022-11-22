@@ -12,10 +12,10 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
+        //gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
         customization = GameObject.Find("boss").GetComponent<Customization>();
-        gameManager = GameObject.Find("god").GetComponent<GameManager>();
-        infoPopulation = GameObject.Find("Unit Information").GetComponent<InfoPopulation>();
+        gameManager = GameObject.Find("boss").GetComponent<GameManager>();
+        infoPopulation = this.GetComponent<InfoPopulation>();
     }
 
     // Update is called once per frame
@@ -25,11 +25,11 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        gridMovement = gameManager.selectedUnit.GetComponentInChildren<GridMovement>();
+        gridMovement = gameManager.selectedUnit.GetComponent<GridMovement>();
         gridMovement.selected = "Enemy";
         //OnTriggerEnter(hit.collider);
-        gameManager.selectedEnemy = collider.transform.gameObject;
-        gameManager.attackingEnemyUnit = collider.gameObject;
+        gameManager.selectedEnemy = this.transform.gameObject;
+        gameManager.attackingEnemyUnit = this.gameObject;
         //gameManager.finishedUnits = selectedUnit.GetComponentInChildren<GridMovement>().unitsMoved;
         gridMovement.attackPossible = true;
         //gameManager.attackButton.gameObject.SetActive(true);
@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
     private void OnMouseOver()
     {
         Debug.Log("Over enemy");
-        infoPopulation.selectedCollider = this.gameObject.GetComponent<Collider>();
+        //infoPopulation.selectedCollider = this.gameObject.GetComponent<Collider>();
         //infoPopulation.Activate();
     }
     private void OnMouseExit()

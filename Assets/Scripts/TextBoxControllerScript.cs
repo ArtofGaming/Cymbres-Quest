@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro; // for TMP text UI
 using System.IO; //File IO for text file scripts
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextBoxControllerScript : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class TextBoxControllerScript : MonoBehaviour
     public TextAsset TextFile;
     public float TextTimeDelay = .125f;
     public Button NextTextButton;
+    public Button ContinueTextButton;
     //DO we need a button to go to the next scene?
     //public Button CloseUIButton;
     private string CharacterName;
@@ -22,6 +24,11 @@ public class TextBoxControllerScript : MonoBehaviour
 
     #endregion
 
+    public void Awake()
+    {
+        NextTextButton.gameObject.SetActive(false);
+        ContinueTextButton.gameObject.SetActive(false);
+    }
     private void Start()
     {
         StartText();
@@ -31,7 +38,7 @@ public class TextBoxControllerScript : MonoBehaviour
     {
         string path = "Assets/Resources/Narrative/" + TextFile.name +".txt";
         //Read the text from directly from the test.txt file
-        textReader = new StreamReader(path);
+        textReader = new StreamReader (Path.Combine(Application.streamingAssetsPath, "IntroductionTextFile.txt"));
 
         //textReader = new StreamReader(Path.Combine(Application.streamingAssetsPath, TextFile.name));
         GrabNextText();
@@ -63,9 +70,10 @@ public class TextBoxControllerScript : MonoBehaviour
     public void EndText()
     {
         textReader.Close();
+        NextTextButton.gameObject.SetActive(false);
+        ContinueTextButton.gameObject.SetActive(true);
 
     }
-
         IEnumerator PlayText()
     {
 

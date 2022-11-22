@@ -119,9 +119,12 @@ public class InfoPopulation : MonoBehaviour
 
     void ChangedActiveScene(Scene current, Scene next)
     {
-        gameManager = GameObject.Find("boss").GetComponent<GameManager>();
-        gameObject.AddComponent<GridMovement>();
-        gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<GridMovement>();
-        gridMovement.collider = this.GetComponent<CapsuleCollider>();
+        if (next.name == "Battle Scene")
+        {
+            gameManager = GameObject.Find("boss").GetComponent<GameManager>();
+            gameObject.AddComponent<GridMovement>();
+            //gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<GridMovement>();
+            //gridMovement.collider = this.GetComponent<CapsuleCollider>();
+        }
     }
 }

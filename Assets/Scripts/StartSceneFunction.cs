@@ -13,7 +13,7 @@ public class StartSceneFunction : MonoBehaviour
     public void NewGamePressed()
     {
         Debug.Log("New Game to be started.");
-        SceneManager.LoadScene("Customization");
+        SceneManager.LoadScene("IntroNarrativeScene");
     }
 
     public void LoadGamePressed()
@@ -39,6 +39,13 @@ public class StartSceneFunction : MonoBehaviour
         }
 
     }
+
+    public void StartScreenPressed()
+    {
+        Debug.Log("Start Menu now starting.");
+        SceneManager.LoadScene("StartScene");
+    }
+
     public void ExitGame()
     {
         Debug.Log("Game is exiting now.");

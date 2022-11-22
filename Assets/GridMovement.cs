@@ -27,7 +27,7 @@ public class GridMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackPossible = false;
+        attackPossible = true;
         //customization = GameObject.Find("boss").GetComponent<Customization>();
         gameManager = GameObject.Find("boss").GetComponent<GameManager>();
         gameManager.selectedUnit = gameManager.aliveUnits[0];
@@ -56,19 +56,19 @@ public class GridMovement : MonoBehaviour
             myCollider = gameManager.selectedUnit.GetComponentInChildren<MeshCollider>();
             //myCollider.gameObject.GetComponentInChildren<Renderer>().material = movementMaterial;
             selected = "player";
-            gameManager.gridMovement = gameManager.selectedUnit.GetComponentInChildren<GridMovement>();
+            gameManager.gridMovement = gameManager.selectedUnit.GetComponent<GridMovement>();
         }
         else
         {
             // if point selected is in allowed range and unit has not moved yet
-            if (gameManager.selectedUnit.GetComponentInChildren<GridMovement>().moved == false)
+            if (gameManager.selectedUnit.GetComponent<GridMovement>().moved == false)
             {
                 Debug.Log("Moving");
                 ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 Physics.Raycast(ray, out hit);
                 gameManager.selectedUnit.transform.position = new Vector3(hit.point.x, 0, hit.point.z);
                 gameManager.selectedUnit.GetComponentInChildren<GridMovement>().moved = true;
-                gameManager.selectedUnit.transform.GetChild(0).localScale = new Vector3((float).05, (float).005, (float).05);
+                gameManager.selectedUnit.transform.GetChild(0).localScale = Vector3.zero;
 
             }
         }        
@@ -83,7 +83,7 @@ public class GridMovement : MonoBehaviour
 
     private void OnMouseExit()
     {
-        //infoPopulation.selectedCollider = null;
+        infoPopulation.selectedCollider = null;
         //infoPopulation.unitInfoPanel.GetComponent<RectTransform>().localPosition = new Vector3(2000, 1000, 1000);
     }
 
