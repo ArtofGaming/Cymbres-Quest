@@ -20,6 +20,8 @@ public class TextBoxControllerScript : MonoBehaviour
     private string CharacterName;
     private string DialogueText;
     private StreamReader textReader;
+    float timer = 1f;
+    private bool SkipMouseFinished = true;
 
 
     #endregion
@@ -76,13 +78,39 @@ public class TextBoxControllerScript : MonoBehaviour
     }
         IEnumerator PlayText()
     {
-
+        
         foreach(char c in DialogueText)
         {
-            DialogueTextMesh.text += c;
-            yield return new WaitForSeconds(TextTimeDelay);
+            if (SkipMouseFinished && Input.GetMouseButton(0))
+            {
+                DialogueTextMesh.text = DialogueText;
+                timer = 1f;
+                NextTextButton.gameObject.SetActive(true);
+
+                yield break;
+            }
+            else
+            {
+                DialogueTextMesh.text += c;
+                yield return new WaitForSeconds(TextTimeDelay);
+            }
+
         }
 
         NextTextButton.gameObject.SetActive(true);
+    }
+
+    
+    public void FixedUpdate()
+    {
+        while (timer > 0)
+        {
+            SkipMouseFinished = false;
+            timer -= Time.deltaTime;
+        }
+        if(timer < 0)
+        {
+            SkipMouseFinished = true;
+        }
     }
 }
