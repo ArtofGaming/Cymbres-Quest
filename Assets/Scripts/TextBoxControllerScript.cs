@@ -15,13 +15,14 @@ public class TextBoxControllerScript : MonoBehaviour
     public float TextTimeDelay = .125f;
     public Button NextTextButton;
     public Button ContinueTextButton;
+    public Button SkipTextButton;
     //DO we need a button to go to the next scene?
     //public Button CloseUIButton;
     private string CharacterName;
     private string DialogueText;
     private StreamReader textReader;
     float timer = 1f;
-    private bool SkipMouseFinished = true;
+    private bool SkipButtonHasBeenPressed = false;
 
 
     #endregion
@@ -49,6 +50,7 @@ public class TextBoxControllerScript : MonoBehaviour
     public void GrabNextText()
     {
         NextTextButton.gameObject.SetActive(false);
+        SkipTextButton.gameObject.SetActive(true);
 
         if (textReader != null && !textReader.EndOfStream)
         {
@@ -81,12 +83,11 @@ public class TextBoxControllerScript : MonoBehaviour
         
         foreach(char c in DialogueText)
         {
-            if (SkipMouseFinished && Input.GetMouseButton(0))
+            if (SkipButtonHasBeenPressed)
             {
                 DialogueTextMesh.text = DialogueText;
-                timer = 1f;
                 NextTextButton.gameObject.SetActive(true);
-
+                SkipButtonHasBeenPressed = false;
                 yield break;
             }
             else
@@ -96,21 +97,16 @@ public class TextBoxControllerScript : MonoBehaviour
             }
 
         }
-
+        SkipTextButton.gameObject.SetActive(false);
         NextTextButton.gameObject.SetActive(true);
     }
 
     
-    public void FixedUpdate()
+    public void SkipButtonPressed()
     {
-        while (timer > 0)
-        {
-            SkipMouseFinished = false;
-            timer -= Time.deltaTime;
-        }
-        if(timer < 0)
-        {
-            SkipMouseFinished = true;
-        }
+        SkipButtonHasBeenPressed = true;
+        SkipTextButton.gameObject.SetActive(false);
     }
+
+
 }

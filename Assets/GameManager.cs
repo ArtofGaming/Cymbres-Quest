@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
         //if player rolls higher than 80, crit occurs
         if (crit > 80)
         {
-            
+            attackingEnemyUnit.GetComponent<EnemyHPBar>().ShowHP(attackingUnitInfo.unitAttack + Mathf.RoundToInt(attackingUnitInfo.unitAttack * (float).1));
             damageText.text = (Mathf.RoundToInt(attackingUnitInfo.unitAttack += Mathf.RoundToInt(attackingUnitInfo.unitAttack * (float).1))).ToString();
             attackingEnemyInfo.unitHealth -= attackingUnitInfo.unitAttack + Mathf.RoundToInt(attackingUnitInfo.unitAttack*(float).1);
         }
@@ -213,6 +213,7 @@ public class GameManager : MonoBehaviour
         //no crit
         else
         {
+            attackingEnemyUnit.GetComponent<EnemyHPBar>().ShowHP(attackingUnitInfo.unitAttack);
             damageText.text = attackingUnitInfo.unitAttack.ToString();
             attackingEnemyInfo.unitHealth -= attackingUnitInfo.unitAttack;
         }
