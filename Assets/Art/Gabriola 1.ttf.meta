@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7f7c2c53428f224fa440d4ced472f99
+guid: 7b0c5819ef7912940971d126d1379b11
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,7 +8,8 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontNames: []
+  fontNames:
+  - Gabriola
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
