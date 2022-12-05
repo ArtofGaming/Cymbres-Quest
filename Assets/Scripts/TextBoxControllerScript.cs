@@ -61,6 +61,8 @@ public class TextBoxControllerScript : MonoBehaviour
             CharNameTextMesh.text = CharacterName;
             DialogueTextMesh.text = "";
 
+            gameObject.GetComponent<ImageTextboxController>().ChangeImage();
+
             StartCoroutine(PlayText());
         }
         else
