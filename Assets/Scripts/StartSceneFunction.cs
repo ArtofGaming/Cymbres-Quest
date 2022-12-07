@@ -9,10 +9,12 @@ public class StartSceneFunction : MonoBehaviour
     private bool OptionIsOn = false;
     public GameObject OptionsPanel;
     public GameObject MainMenu;
+    public AudioManager audioManager;
 
     public void NewGamePressed()
     {
         Debug.Log("New Game to be started.");
+        audioManager.LeavingStartScreen();
         SceneManager.LoadScene("IntroNarrativeScene");
     }
 

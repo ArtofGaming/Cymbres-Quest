@@ -49,6 +49,7 @@ public class TextBoxControllerScript : MonoBehaviour
 
     public void GrabNextText()
     {
+        FindObjectOfType<AudioManager>().buttonNoise.Play();
         NextTextButton.gameObject.SetActive(false);
         SkipTextButton.gameObject.SetActive(true);
 

@@ -375,7 +375,7 @@ public class Customization : MonoBehaviour
         currentUnitInfo.unitMovementSpeed += .05f * currentUnit.GetComponent<Renderer>().materials[1].color.r * currentUnitInfo.unitMovementSpeed;
         currentUnitInfo.unitAttackRange += .05f * currentUnit.GetComponent<Renderer>().materials[1].color.g * currentUnitInfo.unitEnergy;
         currentUnitInfo.unitEvasion += Mathf.RoundToInt(.25f * currentUnit.GetComponent<Renderer>().materials[1].color.b * currentUnitInfo.unitCritChance);
-
+        FindObjectOfType<AudioManager>().LeavingCustomScene();
         SceneManager.LoadScene("Battle Scene");
         for (int i = 0; i < units.Count; i++)
         {
