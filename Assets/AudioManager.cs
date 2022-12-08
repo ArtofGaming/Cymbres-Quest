@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
         for (float i = 0f; i < 1f; i += 0.1f)
         {
             mainTheme.volume -= volumeInterval;
-            otherTheme.volume += volumeInterval;
+            otherTheme.volume += volumeInterval/2;
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -58,8 +58,8 @@ public class AudioManager : MonoBehaviour
     {
         for (float i = 0f; i < 1f; i += 0.1f)
         {
-            otherTheme.volume -= volumeInterval;
-            battleTheme.volume += volumeInterval/2;
+            otherTheme.volume -= volumeInterval/2;
+            battleTheme.volume += volumeInterval/4;
             yield return new WaitForSeconds(0.1f);
         }
     }

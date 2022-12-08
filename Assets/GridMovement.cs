@@ -20,7 +20,8 @@ public class GridMovement : MonoBehaviour
     int unitsMoved = 0;
     public Collider collider;
     public InfoPopulation infoPopulation;
-    
+
+    public SmallTextScript text;
 
     //show movement and other actions possible
 
@@ -32,6 +33,7 @@ public class GridMovement : MonoBehaviour
         gameManager = GameObject.Find("boss").GetComponent<GameManager>();
         gameManager.selectedUnit = gameManager.aliveUnits[0];
         infoPopulation = this.gameObject.GetComponent<InfoPopulation>();
+        text = FindObjectOfType<SmallTextScript>();
     }
 
 
@@ -57,6 +59,7 @@ public class GridMovement : MonoBehaviour
             //myCollider.gameObject.GetComponentInChildren<Renderer>().material = movementMaterial;
             selected = "player";
             gameManager.gridMovement = gameManager.selectedUnit.GetComponent<GridMovement>();
+            text.TextTrigger();
         }
         else
         {
@@ -69,6 +72,7 @@ public class GridMovement : MonoBehaviour
                 gameManager.selectedUnit.transform.position = new Vector3(hit.point.x, 0, hit.point.z);
                 gameManager.selectedUnit.GetComponentInChildren<GridMovement>().moved = true;
                 gameManager.selectedUnit.transform.GetChild(0).localScale = Vector3.zero;
+                text.TextTrigger();
 
             }
         }        
