@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
                 whoseTurn = "Enemy";
                 finishedUnits = 0;
-                TurnSwitch();
+                //TurnSwitch();
 
             }
             
@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour
         finishedUnits++;
 
         Debug.Log("enemy health is now " + attackingEnemyInfo.unitHealth);
+        Debug.Log(finishedUnits);
 
         //If enemy loses all health, destroy GO
         if (attackingEnemyInfo.unitHealth <= 0)
