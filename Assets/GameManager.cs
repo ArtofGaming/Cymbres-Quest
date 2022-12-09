@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     GameObject fastestUnit;
     public TextMeshProUGUI damageText;
     public List <int> unitDistance;
+    public Animation attackAnim;
     #endregion
 
     //have units deselect at the end of turn
@@ -197,9 +198,11 @@ public class GameManager : MonoBehaviour
         attackingEnemyUnit = selectedEnemy;
         attackingEnemyInfo = attackingEnemyUnit.GetComponent<UnitInfo>();
         attackingUnitInfo = attackingUnit.GetComponent<UnitInfo>();
+        attackAnim = attackingUnit.GetComponentInChildren<Animation>();
 
         Debug.Log("Attacking " + attackingEnemyUnit.name);
         crit = Random.Range(attackingUnitInfo.unitCritChance, 100);
+        attackAnim.Play();
         StartCoroutine(ShowDamage(attackingUnitInfo.unitAttack, attackingEnemyUnit));
         
         //if player rolls higher than 80, crit occurs
@@ -218,7 +221,7 @@ public class GameManager : MonoBehaviour
             attackingEnemyInfo.unitHealth -= attackingUnitInfo.unitAttack;
         }
         finishedUnits++;
-
+        
         Debug.Log("enemy health is now " + attackingEnemyInfo.unitHealth);
         Debug.Log(finishedUnits);
 

@@ -100,7 +100,7 @@ public class TextBoxControllerScript : MonoBehaviour
             }
 
         }
-        SkipTextButton.gameObject.SetActive(false);
+        //SkipTextButton.gameObject.SetActive(false);
         NextTextButton.gameObject.SetActive(true);
     }
 
@@ -108,7 +108,9 @@ public class TextBoxControllerScript : MonoBehaviour
     public void SkipButtonPressed()
     {
         SkipButtonHasBeenPressed = true;
+        EndText();
         SkipTextButton.gameObject.SetActive(false);
+       
     }
 
 

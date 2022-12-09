@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -830,6 +830,10 @@ PrefabInstance:
     - target: {fileID: 2078078746043976655, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
       propertyPath: m_Name
       value: UITextChat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418909379824615179, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -411.11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}

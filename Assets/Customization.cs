@@ -141,6 +141,7 @@ public class Customization : MonoBehaviour
         newUnit.transform.localPosition = new Vector3(0, -.5f, 3);
         if (clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Warrior")
         {
+            
             newUnit.AddComponent<Warrior>();
             units.Add(newUnit);
 
