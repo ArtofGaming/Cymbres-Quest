@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         for(int x =0; x < aliveUnits.Count; x++)
         {
-            aliveUnits[x].transform.position += new Vector3(x,0, 0);
+            aliveUnits[x].transform.position += new Vector3(x,1, 0);
         }
         //gridMovement = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<GridMovement>();
     }
@@ -305,8 +305,9 @@ public class GameManager : MonoBehaviour
             }
             attackingUnit = aliveUnits[unitDistance.IndexOf(unitDistance.Min())];
             attackingUnitInfo = attackingUnit.GetComponent<UnitInfo>();
-
+            attackAnimator = attackingUnit.GetComponent<Animator>();
             Debug.Log("Attacking " + attackingUnit.name);
+            attackAnimator.Play("Attack");
 
             //crit chance, if >80 crit, else normal damage
             crit = Random.Range(attackingUnitInfo.unitCritChance, 100);
