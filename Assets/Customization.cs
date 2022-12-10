@@ -138,22 +138,33 @@ public class Customization : MonoBehaviour
     {
         clickedUnitButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         GameObject newUnit = Instantiate(unitPrefab);
-        newUnit.transform.localPosition = new Vector3(0, -.5f, 3);
+        newUnit.transform.localPosition = new Vector3(0, -1.45f, 3);
         if (clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Warrior")
         {
             
             newUnit.AddComponent<Warrior>();
+            newUnit.transform.GetChild(1).gameObject.SetActive(true);
+            Destroy(newUnit.transform.GetChild(2).gameObject);
+            Destroy(newUnit.transform.GetChild(3).gameObject);
             units.Add(newUnit);
 
         }
         else if(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text == "Hunter")
         {
             newUnit.AddComponent<Hunter>();
+            newUnit.transform.GetChild(2).gameObject.SetActive(true);
+            Destroy(newUnit.transform.GetChild(1).gameObject);
+            Destroy(newUnit.transform.GetChild(3).gameObject);
+            
             units.Add(newUnit);
         }
         else
         {
             newUnit.AddComponent<Guardian>();
+            newUnit.transform.GetChild(3).gameObject.SetActive(true);
+            Destroy(newUnit.transform.GetChild(1).gameObject);
+            Destroy(newUnit.transform.GetChild(2).gameObject);
+            
             units.Add(newUnit);
         }
 
@@ -176,7 +187,15 @@ public class Customization : MonoBehaviour
             choiceHolder.SetActive(false);
             dropdownHolder.SetActive(true);
             navigationHolder.SetActive(true);
-            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
+            if(newUnit.GetComponent<Hunter>() != null)
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[0];
+            }
+            else
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetComponent<Renderer>().materials[0];
+            }
+            
         }
         Debug.Log(clickedUnitButton.GetComponentInChildren<TextMeshProUGUI>().text);
     }
@@ -199,7 +218,14 @@ public class Customization : MonoBehaviour
         //changes settings to hide prev unit and set current unit active. Shows info of the unit as well.
         lastUnit.SetActive(false);
         //currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
-        selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
+        if (currentUnit.GetComponent<Hunter>() != null)
+        {
+            selectedMaterial = currentUnit.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[0];
+        }
+        else
+        {
+            selectedMaterial = currentUnit.transform.GetChild(1).GetComponent<Renderer>().materials[0];
+        }
         currentUnit.SetActive(true);
         currentUnitInfo = currentUnit.GetComponent<UnitInfo>();
         ShowInfo();
@@ -224,7 +250,14 @@ public class Customization : MonoBehaviour
         lastUnit.SetActive(false);
         currentUnit.SetActive(true);
         //currentUnit.transform.localPosition = new Vector3((float)0, (float)1, (float).72);
-        selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
+        if (currentUnit.GetComponent<Hunter>() != null)
+        {
+            selectedMaterial = currentUnit.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[0];
+        }
+        else
+        {
+            selectedMaterial = currentUnit.transform.GetChild(1).GetComponent<Renderer>().materials[0];
+        }
         currentUnitInfo = currentUnit.GetComponent<UnitInfo>();
         ShowInfo();
         
@@ -237,18 +270,39 @@ public class Customization : MonoBehaviour
         if(materialDropdown.value == 2)
         {
             lastMaterial = selectedMaterial;
-            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[1];
+            if (currentUnit.GetComponent<Hunter>() != null)
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[1];
+            }
+            else
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetComponent<Renderer>().materials[1];
+            }
 
         }
         else if (materialDropdown.value == 1)
         {
             lastMaterial = selectedMaterial;
-            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[2];
+            if (currentUnit.GetComponent<Hunter>() != null)
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[2];
+            }
+            else
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetComponent<Renderer>().materials[2];
+            }
         }
         else
         {
             lastMaterial = selectedMaterial;
-            selectedMaterial = currentUnit.GetComponent<Renderer>().materials[0];
+            if (currentUnit.GetComponent<Hunter>() != null)
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[0];
+            }
+            else
+            {
+                selectedMaterial = currentUnit.transform.GetChild(1).GetComponent<Renderer>().materials[0];
+            }
         }
     }
 
@@ -382,7 +436,7 @@ public class Customization : MonoBehaviour
         {
             DontDestroyOnLoad(units[i]);
             units[i].SetActive(true);
-            units[i].gameObject.transform.localScale = new Vector3(25,25,25);
+            units[i].gameObject.transform.localScale = new Vector3(50,50,50);
             
             
         }

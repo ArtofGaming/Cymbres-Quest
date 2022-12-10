@@ -3,7 +3,77 @@ guid: 3c060ffe8f8093442a7e6f726410ea64
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: 4ee240e12ce56a04eb4a59ba4d7d0b63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2100000, guid: 7dc70e653a6c4ca4a935bac539975064, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Legs
+    second: {fileID: 2100000, guid: f67647de943d1534fa26fd0c70c5fb0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Top
+    second: {fileID: 2100000, guid: 5cb4508548d34a84dadf3bae50adf8b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arrows
+    second: {fileID: 2100000, guid: c67de3d4e66f938439fda4f6adb0c7ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt
+    second: {fileID: 2100000, guid: 32bd8ccffdbc91c4593d2e5d979e6621, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt_loop
+    second: {fileID: 2100000, guid: 75f18734f0edf044fadeeafedfe22b71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: af7444072baab6a4692f5d3a09576f3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cork
+    second: {fileID: 2100000, guid: bfd1745f8d1657741ac468dd2aca46f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ears
+    second: {fileID: 2100000, guid: 2dd0d60f7b2c93b4e95746ac11ff5d87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: knife_handle
+    second: {fileID: 2100000, guid: 7d0d7020969296d449ccdfa3305ffb9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 130ff668908017149879a4cd7ab6438c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: potion_bottle
+    second: {fileID: 2100000, guid: 2bd2f37d96973a54588c1db5fd98c621, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 075e06910fd0cd6499f82b0fc2c5049b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
