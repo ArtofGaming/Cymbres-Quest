@@ -1958,8 +1958,8 @@ GameObject:
   - component: {fileID: 2132345040}
   - component: {fileID: 2132345039}
   - component: {fileID: 2132345038}
-  - component: {fileID: 2132345037}
   - component: {fileID: 2132345042}
+  - component: {fileID: 2132345037}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1977,7 +1977,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8026d78cc40d30e48a4429755f58a305, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c227ae6130bc519468af818793859e67, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
