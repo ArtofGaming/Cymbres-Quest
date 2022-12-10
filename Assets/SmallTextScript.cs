@@ -10,8 +10,10 @@ public class SmallTextScript : MonoBehaviour
 {
 
     public int counter = 0;
-    public int startingCounter = 0;
-    public int postAttackCounter = 0;
+    public int counter1 = 0;
+    public int counter2 = 0;
+    public bool check = false;
+    public bool check2 = false;
 
     #region "Vars"
     public TextMeshProUGUI DialogueTextMesh;
@@ -24,7 +26,6 @@ public class SmallTextScript : MonoBehaviour
     private string DialogueText;
     private StreamReader textReader;
     float timer = 1f;
-    private bool SkipButtonHasBeenPressed = false;
 
 
     #endregion
@@ -34,13 +35,49 @@ public class SmallTextScript : MonoBehaviour
         StartText();
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            if (check2 == true)
+            {
+                check = true;
+            }
+            else if (check2 == false && counter < 3)
+            {
+                GrabNextText();
+                counter++;
+            } else if (counter2 == 2 || counter2 == 5)
+            {
+                GrabNextText();
+                counter2++;
+            }
+        }
+    }
+
     public void TextTrigger()
     {
-        if(counter == 0 || counter == 1 || counter == 5)
+        if(counter1 < 2)
+        {
+            GrabNextText();
+            counter1++;
+        }
+    }
+
+    public void DamageTrigger()
+    {
+        if(counter2 ==  0)
+        {
+            counter2++;
+            GrabNextText();
+        } else if (counter2 == 3)
+        {
+            counter2++;
+        } else if (counter2 == 4)
         {
             GrabNextText();
         }
-        counter++;
     }
 
     public void StartText()
@@ -67,8 +104,9 @@ public class SmallTextScript : MonoBehaviour
             DialogueTextMesh.text = "";
 
             gameObject.GetComponent<ImageTextboxController>().ChangeImage();
-
+            check2 = true;
             StartCoroutine(PlayText());
+            check2 = false;
 
         }
         else
@@ -82,30 +120,28 @@ public class SmallTextScript : MonoBehaviour
     public void EndText()
     {
         textReader.Close();
-
     }
+
     IEnumerator PlayText()
     {
 
         foreach (char c in DialogueText)
         {
+            if (check == true)
+            {
+                DialogueTextMesh.text = DialogueText;
+                check = false;
+                yield break;
+            }
+            else
             {
                 DialogueTextMesh.text += c;
                 yield return new WaitForSeconds(TextTimeDelay);
             }
-
         }
-        if(startingCounter < 3)
+        if(counter2 == 1 || counter2 == 4)
         {
-            startingCounter++;
-            Invoke("GrabNextText", 4.0f);
-        } else if(postAttackCounter < 2 && counter == 2)
-        {
-            postAttackCounter++;
-            Invoke("GrabNextText", 4.0f);
-        } else if (counter == 5)
-        {
-            Invoke("GrabNextText", 4.0f);
+            counter2++;
         }
     }
 }

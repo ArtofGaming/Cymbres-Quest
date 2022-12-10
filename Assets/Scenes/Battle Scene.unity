@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -779,7 +779,8 @@ MonoBehaviour:
   enemySpeedList: []
   damageText: {fileID: 1850629791}
   unitDistance: 
-  attackAnim: {fileID: 0}
+  attackAnimator: {fileID: 0}
+  battleText: {fileID: 1146921222}
 --- !u!4 &305322027
 Transform:
   m_ObjectHideFlags: 0
@@ -2673,6 +2674,50 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: b62905a7473f53847a91d6aeb6231aef, type: 3}
+    - target: {fileID: 1435621305861853567, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
+      propertyPath: PortraitSequence.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
     - target: {fileID: 1435621306638395193, guid: 8aa2b45f9583d9645b2c529bc5dccaad, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -14.029114
@@ -2715,8 +2760,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 0
-  startingCounter: 0
-  postAttackCounter: 0
+  counter1: 0
+  counter2: 0
+  check: 0
+  check2: 0
   DialogueTextMesh: {fileID: 1146921224}
   CharNameTextMesh: {fileID: 1146921223}
   TextFile: {fileID: 4900000, guid: 58ba90c1e919cc047987e82c9ace7b34, type: 3}

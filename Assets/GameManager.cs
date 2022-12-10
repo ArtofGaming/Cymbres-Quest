@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI damageText;
     public List <int> unitDistance;
     public Animator attackAnimator;
+    public SmallTextScript battleText;
     #endregion
 
     //have units deselect at the end of turn
@@ -204,6 +205,7 @@ public class GameManager : MonoBehaviour
         crit = Random.Range(attackingUnitInfo.unitCritChance, 100);
         attackAnimator.Play("Attack");
         StartCoroutine(ShowDamage(attackingUnitInfo.unitAttack, attackingEnemyUnit));
+        battleText.DamageTrigger();
         
         //if player rolls higher than 80, crit occurs
         if (crit > 80)

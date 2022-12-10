@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -831,6 +831,82 @@ PrefabInstance:
       propertyPath: m_Name
       value: UITextChat
       objectReference: {fileID: 0}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.size
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[20]
+      value: 
+      objectReference: {fileID: 21300000, guid: b6714751e0e41624fa33398dc57f1013, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[22]
+      value: 
+      objectReference: {fileID: 21300000, guid: b6714751e0e41624fa33398dc57f1013, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[23]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[25]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[27]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[29]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[31]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[32]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[33]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[34]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[35]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[36]
+      value: 
+      objectReference: {fileID: 21300000, guid: b6714751e0e41624fa33398dc57f1013, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[37]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[38]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1780f53dffc46c04faa17c439d80745e, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[39]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[40]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[41]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
+    - target: {fileID: 2078078746744705641, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
+      propertyPath: PortraitSequence.Array.data[42]
+      value: 
+      objectReference: {fileID: 21300000, guid: 798be7c0036408d46be5b11c8d24c3f7, type: 3}
     - target: {fileID: 6418909379824615179, guid: 0f8fa8e55a57e6244835b1785aa92932, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -411.11
