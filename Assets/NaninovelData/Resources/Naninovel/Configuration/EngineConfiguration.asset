@@ -21,11 +21,11 @@ MonoBehaviour:
   - Assembly-CSharp-Editor
   - Elringus.Naninovel.Runtime
   - Elringus.Naninovel.Editor
-  InitializeOnApplicationLoad: 1
+  InitializeOnApplicationLoad: 0
   SceneIndependent: 0
   ShowInitializationUI: 0
   CustomInitializationUI: {fileID: 0}
-  ShowTitleUI: 1
+  ShowTitleUI: 0
   EnableBridging: 0
   ServerPort: 41016
   AutoGenerateMetadata: 1
